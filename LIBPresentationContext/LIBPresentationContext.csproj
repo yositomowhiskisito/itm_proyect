@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LIBCommunicationContext\LIBCommunicationContext.csproj" />
+    <ProjectReference Include="..\LIBDomainContext\LIBDomainContext.csproj" />
+    <ProjectReference Include="..\LIBDomainEntities\LIBDomainEntities.csproj" />
+    <ProjectReference Include="..\LIBInfrastructure\LIBInfrastructure.csproj" />
+    <ProjectReference Include="..\LIBPresentationCore\LIBPresentationCore.csproj" />
+    <ProjectReference Include="..\LIBUtilities\LIBUtilities.csproj" />
+  </ItemGroup>
+
+</Project>

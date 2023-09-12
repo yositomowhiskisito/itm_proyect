@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LIBDomainContext\LIBDomainContext.csproj" />
+    <ProjectReference Include="..\LIBDomainEntities\LIBDomainEntities.csproj" />
+    <ProjectReference Include="..\LIBInfrastructure\LIBInfrastructure.csproj" />
+    <ProjectReference Include="..\LIBUtilities\LIBUtilities.csproj" />
+  </ItemGroup>
+
+</Project>

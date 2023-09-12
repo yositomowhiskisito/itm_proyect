@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XAM_ProyectITM.Screens.Phone.TabbedPage1"
+    BarBackgroundColor="DarkGray" >
+  <!--Pages can be added as references or inline-->
+    <ContentPage x:Name="cntPersons" Title="Persons" IconImageSource="types.png">
+        <ScrollView Orientation="Vertical">
+            <StackLayout>
+                <Image Margin="5"
+                    HeightRequest="400"
+                    WidthRequest="200"
+                    Source="Persons.gif" 
+                    IsAnimationPlaying="False"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="Users" IconImageSource="login.png">
+        <Frame CornerRadius="15" 
+            Margin="5"
+            BackgroundColor="LightBlue" 
+            HasShadow="True"
+            Padding="0">
+            <ScrollView Orientation="Vertical" >
+                <StackLayout Margin="5">
+                    <Image
+                        HeightRequest="400"
+                        WidthRequest="200"
+                        Source="Users.gif"
+                        IsAnimationPlaying="False"/>
+
+                    <Image
+                        HeightRequest="400"
+                        WidthRequest="200"
+                        Source="Hello.gif"
+                        IsAnimationPlaying="False"/>
+                </StackLayout>
+            </ScrollView>
+        </Frame>
+    </ContentPage>
+    <ContentPage Title="Reports" IconImageSource="details.png">
+        <StackLayout Margin="5">
+            <Image
+                HeightRequest="400"
+                WidthRequest="200"
+                Source="Reports.gif"
+                IsAnimationPlaying="False"/>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

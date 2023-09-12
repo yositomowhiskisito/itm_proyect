@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Audits]
+(
+	[Id] INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	[Table] NVARCHAR(500) NOT NULL,
+	[Description] NVARCHAR(500) NOT NULL,
+	[Reference] NVARCHAR(500) NULL,
+	[User] INT NULL,
+	[Date] SMALLDATETIME NOT NULL,
+)

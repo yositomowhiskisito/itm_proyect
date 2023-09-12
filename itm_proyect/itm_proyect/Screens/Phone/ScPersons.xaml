@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:itm_proyect.Core;assembly=itm_proyect" 
+    x:Class="itm_proyect.Screens.Phone.ScPersons">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:BoolConverters x:Key="BoolConverters"/>
+            <c:AgeConverters x:Key="AgeConverters"/>
+            <c:ByteArrayToImageSource x:Key="ByteArrayToImageSource"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Padding="10, 10, 10, 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="4"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0" x:Name="clDetail"/>
+                <ColumnDefinition Width="*" x:Name ="clList"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" 
+                Grid.Column="1" 
+                Font="Bold" 
+                HorizontalOptions="Start"
+                FontSize="20" 
+                Text="Persons"
+                TextColor="Black"/>
+
+            <Grid Grid.Row="3" 
+                Grid.Column="0"
+                Grid.ColumnSpan="2" 
+                Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image  Grid.Column="0"
+                    Source="plus.png" 
+                    HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NewCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Column="1" 
+                    Source="edit.png"
+                    HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding UpdateCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Column="2" 
+                    Source="load.png" 
+                    HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoadCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Column="3" 
+                    Source="delete.png"
+                    HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DeleteCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Column="4" 
+                    Source="pdf.png" 
+                    HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CreatePDFCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Column="5" 
+                    Source="save.png"
+                    Margin="6"
+                    HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Column="6" 
+                    Source="upload.png" 
+                    HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped= "TapGestureRecognizer_Tapped"
+                            NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Row="7" 
+                    Source="close.png" 
+                    HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CloseCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            <Grid Grid.Row="3" 
+                Grid.Column="0" 
+                Margin="5" 
+                x:Name="grDetail"
+                Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" 
+                    Grid.Column="0" 
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Center"
+                    Grid.ColumnSpan="2"
+                    FontSize="15" Text="Person "
+                    TextColor="Black"/>
+
+                <Label Grid.Row="1" 
+                    Grid.Column="0" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    FontSize="15" 
+                    Text="SSN: "
+                    TextColor="Black"/>
+                <Entry Grid.Row="1" 
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" Margin="2"
+                    x:Name="txSSN" 
+                    Text="{Binding Current.SSN, Mode=TwoWay}"
+                    Keyboard="Numeric"
+                    TextColor="Black"
+                    BackgroundColor="LightGray"/>
+
+                <Label Grid.Row="2" 
+                    Grid.Column="0" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    FontSize="15" 
+                    Text="Name: "
+                    TextColor="Black"/>
+                <Entry Grid.Row="2" 
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Margin="2"
+                    x:Name="txName" 
+                    Text="{Binding Current.Name, Mode=TwoWay}" 
+                    Keyboard="Default"
+                    TextColor="Black"
+                    BackgroundColor="LightGray"/>
+
+                <Label Grid.Row="3" 
+                    Grid.Column="0" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    FontSize="15" 
+                    Text="Born: "
+                    TextColor="Black"/>
+                <DatePicker Grid.Row="3" 
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Margin="2"
+                    x:Name="txBorn" 
+                    Date="{Binding Current.Born, Mode=TwoWay}" 
+                    TextColor="Black"
+                    BackgroundColor="LightGray"/>
+
+                <Label Grid.Row="4" 
+                    Grid.Column="0"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    FontSize="15" Text="State: "
+                    TextColor="Black"/>
+                <CheckBox Grid.Row="4"  
+                    Grid.Column="1"
+                    Margin="5"
+                    x:Name="cbState"
+                    IsChecked="{Binding Current.State, Mode=TwoWay}"/>
+
+                <Label Grid.Row="5" 
+                    Grid.Column="0" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    FontSize="15" 
+                    Text="Latitude: "
+                    TextColor="Black"/>
+                <Entry Grid.Row="5" 
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Margin="2"
+                    x:Name="txLatitude" 
+                    Text="{Binding Latitude, Mode=TwoWay}" 
+                    Keyboard="Numeric"
+                    TextColor="Black"
+                    BackgroundColor="LightGray"/>
+
+                <Label Grid.Row="6" 
+                    Grid.Column="0" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    FontSize="15" 
+                    Text="Longitude: "
+                    TextColor="Black"/>
+                <Entry Grid.Row="6" 
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Keyboard="Numeric"
+                    Margin="2"
+                    x:Name="txLongitude" 
+                    Text="{Binding Longitude, Mode=TwoWay}" 
+                    TextColor="Black"
+                    BackgroundColor="LightGray"/>
+                
+                <Label Grid.Row="7" 
+                    Grid.Column="0" 
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    FontSize="15" 
+                    Text="Type: "
+                    TextColor="Black"/>
+                <Entry Grid.Row="7" 
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Margin="2"
+                    x:Name="txType" 
+                    Text="{Binding Current.EntUserTypes.Description, Mode=TwoWay}" 
+                    IsEnabled="False"
+                    TextColor="Black"
+                    BackgroundColor="LightGray"/>
+                <Image Grid.Column="4" 
+                    Grid.Row="7" 
+                    Source="types.png" 
+                    HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            <Grid Grid.Row="3"
+                Grid.Column="1"
+                BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Photo" 
+                    TextColor="White"
+                    FontSize="16"/>
+                <Label Grid.Column="1" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="SSN" 
+                    TextColor="White"
+                    FontSize="16"/>
+                <Label Grid.Column="2" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Name" 
+                    TextColor="White"
+                    FontSize="16"/>
+                <Label Grid.Column="3" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center"
+                    Text="Born"
+                    TextColor="White"
+                    FontSize="16"/>
+                <Label Grid.Column="4" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center"
+                    Text="State"
+                    TextColor="White"
+                    FontSize="16"/>
+                <Label Grid.Column="5" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center"
+                    Text="Type"
+                    TextColor="White"
+                    FontSize="16"/>
+            </Grid>
+
+            <ListView Grid.Row="4" 
+                Grid.Column="1" 
+                x:Name="dgList" 
+                Margin="5" 
+                RowHeight="80" 
+                SeparatorColor="Black" 
+                BackgroundColor="Transparent"
+                ItemsSource="{Binding List, Mode=TwoWay}" 
+                SelectedItem="{Binding Current, Mode=TwoWay}"
+                VerticalScrollBarVisibility="Always" 
+                HorizontalScrollBarVisibility="Always"
+                ItemTapped="dgList_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView>
+                                <Grid Padding="2,15">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="5"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding File, Converter={StaticResource ByteArrayToImageSource}}"
+                                        Grid.Column="0"
+                                        Grid.Row="0" />
+                                    <Label Text="{Binding SSN}" 
+                                        Grid.Column="1" 
+                                        Grid.Row="0" 
+                                        TextColor="Black" 
+                                        Font="Bold"
+                                        HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Name}" 
+                                        Grid.Column="2" 
+                                        Grid.Row="0" 
+                                        TextColor="Black" 
+                                        Font="Bold"
+                                        HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Born, Converter={StaticResource AgeConverters}}" 
+                                        Grid.Column="3"
+                                        Grid.Row="0" 
+                                        TextColor="Black" 
+                                        Font="Bold"
+                                        HorizontalOptions="Center"/>
+                                    <Label Text="{Binding State, Converter={StaticResource BoolConverters}}" 
+                                        Grid.Column="4"
+                                        Grid.Row="0" 
+                                        TextColor="Black"
+                                        Font="Bold"
+                                        HorizontalOptions="Center"/>
+                                    <Label Text="{Binding EntUserTypes.Description}" 
+                                        Grid.Column="5" 
+                                        Grid.Row="0" 
+                                        TextColor="Black" 
+                                        Font="Bold"
+                                        HorizontalOptions="Center"/>
+                                </Grid>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ActivityIndicator Grid.Row="5" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="6"
+                Color="Black"
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                Scale="1.5"
+                x:Name="aiLoading"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
