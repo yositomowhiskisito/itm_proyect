@@ -42,7 +42,7 @@ namespace XAM_ProyectITM.Core
 
             ItemsSource = data;
             VerticalOptions = LayoutOptions.FillAndExpand;
-            BackgroundColor = Color.Black;
+            BackgroundColor = Color.White;
             SeparatorVisibility = SeparatorVisibility.Default;
 
             var cell = new DataTemplate(typeof(MenuCell));
@@ -55,7 +55,10 @@ namespace XAM_ProyectITM.Core
         private List<MenuItem> FillList()
         {
             var list = new List<MenuItem>();
+
+            list.Add(new MenuItem() { Title = "Home", TargetType = typeof(TabbedPage1) });
             list.Add(new MenuItem() { Title = "Persons", TargetType = typeof(SCPersons) });
+            list.Add(new MenuItem() { Title = "Users", TargetType = typeof(SCUsers) });
             return list;
         }
     }
@@ -64,7 +67,7 @@ namespace XAM_ProyectITM.Core
     {
         public MenuCell() : base()
         {
-            this.TextColor = Color.White;
+            this.TextColor = Color.Black;
         }
     }
 

@@ -25,8 +25,8 @@ namespace XAM_ProyectITM.Screens.Phone
             displayPage.Title = "ITM Proyect";
             Detail = new NavigationPage(displayPage)
             {
-                BarBackgroundColor = Color.Black,
-                BarTextColor = Color.White
+                BarBackgroundColor = Color.White,
+                BarTextColor = Color.Black
             };
         }
 
@@ -40,8 +40,8 @@ namespace XAM_ProyectITM.Screens.Phone
             GlobalData.MasterDetailPage.IsGestureEnabled = true;
             Detail = new NavigationPage(displayPage)
             {
-                BarBackgroundColor = Color.Black,
-                BarTextColor = Color.White
+                BarBackgroundColor = Color.White,
+                BarTextColor = Color.Black
             };
             menuPage.Menu.SelectedItem = null;
             IsPresented = false;
@@ -54,8 +54,8 @@ namespace XAM_ProyectITM.Screens.Phone
             GlobalData.MasterDetailPage.IsGestureEnabled = true;
             GlobalData.MasterDetailPage.Detail = new NavigationPage(displayPage)
             {
-                BarBackgroundColor = Color.Black,
-                BarTextColor = Color.White
+                BarBackgroundColor = Color.White,
+                BarTextColor = Color.Black
             };
         }
     }
