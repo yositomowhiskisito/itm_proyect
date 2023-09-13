@@ -3,10 +3,275 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XAM_ProyectITM.Screens.Phone.SCUsers">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <Grid Padding="10, 10, 10, 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0" x:Name="clDetail"/>
+                    <ColumnDefinition Width="*" x:Name ="clList"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" 
+                    Grid.Column="1" 
+                    Font="Bold" 
+                    HorizontalOptions="Start"
+                    FontSize="20" 
+                    Text="Users Account"
+                    TextColor="Black"/>
+
+
+                <Frame Grid.Row="2" 
+                    Grid.Column="0" 
+                    Margin="2"
+                    Grid.ColumnSpan="2"
+                    CornerRadius="10" 
+                    HasShadow="True">
+
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image x:Name="imgnew"
+                        Grid.Column="0"
+                        Source="plus.png"
+                        HorizontalOptions="FillAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NewCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image x:Name="imgupdate"
+                        Grid.Column="1" 
+                        Source="edit.png" 
+                        HorizontalOptions="FillAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UpdateCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image x:Name="imgload"
+                        Grid.Column="2" 
+                        Source="load.png" 
+                        HorizontalOptions="FillAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LoadCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image x:Name="imgdel"
+                        Grid.Column="3"
+                        Source="delete.png"
+                        HorizontalOptions="FillAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DeleteCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image x:Name="imgsave"
+                        Grid.Column="4" 
+                        Source="save.png"
+                        HorizontalOptions="FillAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image x:Name="imgclose"
+                        Grid.Column="7" 
+                        Source="close.png" 
+                        HorizontalOptions="FillAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+
+                </Frame>
+
+                <Frame Grid.Row="3" 
+                    Grid.Column="0" 
+                    Grid.RowSpan="2"
+                    CornerRadius="10" 
+                    HasShadow="True">
+
+                    <Grid Margin="5" 
+                        x:Name="grDetail">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="4"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" 
+                            Grid.Column="0" 
+                            HorizontalOptions="Start" 
+                            VerticalOptions="Center"
+                            Grid.ColumnSpan="2"
+                            FontSize="15" Text="User "
+                            TextColor="Black"/>
+
+                        <Label Grid.Row="1" 
+                            Grid.Column="0" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            FontSize="15" 
+                            Text="Email: "
+                            TextColor="Black"/>
+                        <Entry Grid.Row="1" 
+                            Grid.Column="1" 
+                            Grid.ColumnSpan="3" Margin="2"
+                            x:Name="txSSN" 
+                            Text="{Binding Current.Email, Mode=TwoWay}"
+                            Keyboard="Numeric"
+                            TextColor="Black"
+                            BackgroundColor="LightGray"/>
+
+                        <Label Grid.Row="2" 
+                            Grid.Column="0" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            FontSize="15" 
+                            Text="Person: "
+                            TextColor="Black"/>
+                        <Entry Grid.Row="2" 
+                            Grid.Column="1" 
+                            Grid.ColumnSpan="3" 
+                            Margin="2"
+                            x:Name="txName" 
+                            IsEnabled="False"
+                            Text="{Binding Current._Person.Name, Mode=TwoWay}" 
+                            Keyboard="Default"
+                            TextColor="Black"
+                            BackgroundColor="LightGray"/>
+                        <Image Grid.Column="4" 
+                            Grid.Row="2" 
+                            Source="types.png" 
+                            HorizontalOptions="FillAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="3" 
+                            Grid.Column="0" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            FontSize="15" 
+                            Text="Password: "
+                            TextColor="Black"/>
+                        <Entry Grid.Row="3" 
+                            Grid.Column="1" 
+                            Grid.ColumnSpan="3" 
+                            Margin="2"
+                            x:Name="txPass" 
+                            IsPassword="True"
+                            Text="{Binding Current.Password, Mode=TwoWay}" 
+                            Keyboard="Default"
+                            TextColor="Black"
+                            BackgroundColor="LightGray"/>
+
+                        <Label Grid.Row="4" 
+                            Grid.Column="0"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            FontSize="15" Text="State: "
+                            TextColor="Black"/>
+                        <CheckBox Grid.Row="4"  
+                            Grid.Column="1"
+                            Margin="5"
+                            x:Name="cbState"
+                            IsChecked="{Binding Current.State, Mode=TwoWay}"/>
+                    </Grid>
+                </Frame>
+
+                <StackLayout Grid.Row="3" 
+                        Grid.Column="1" 
+                        Grid.RowSpan="2">
+
+                    <CarouselView ItemsSource="{Binding List}"
+                        CurrentItem="{Binding Current, Mode=TwoWay}">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="True"
+                                        BorderColor="White"
+                                        CornerRadius="10"
+                                        Margin="2"
+                                        HeightRequest="300"
+                                        WidthRequest="400"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="CenterAndExpand">
+                                        <StackLayout>
+                                            <Label Text="{Binding _Person.Name}"
+                                                FontAttributes="Bold"
+                                                FontSize="Large"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center" />
+                                            <Image Source="{Binding _Person.Photo}"
+                                                Aspect="AspectFill"
+                                                HeightRequest="150"
+                                                WidthRequest="150"
+                                                HorizontalOptions="Center" />
+                                            <Label Text="{Binding Email}"
+                                                FontAttributes="Bold"
+                                                FontSize="Large"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center" />
+                                            <Label Text="{Binding State}"
+                                                FontAttributes="Bold"
+                                                FontSize="Large"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+                    <IndicatorView x:Name="indicatorView"
+                       IndicatorColor="LightGray"
+                       SelectedIndicatorColor="DarkGray"
+                       HorizontalOptions="Center" />
+                </StackLayout>
+
+
+                <ActivityIndicator Grid.Row="5" 
+                    Scale="1.8"
+                    Grid.Column="0" 
+                    Color="black" 
+                    x:Name="aiLoading"
+                    Grid.ColumnSpan="2"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
+            </Grid>
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

@@ -12,11 +12,11 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Example Item"
-            IconImageSource="config.png"
+        <ToolbarItem Text="Menu"
+            IconImageSource="ITM.png"
             Clicked="ToolbarItem_Clicked"
             Order="Primary"
-            Priority="0" />
+            Priority="0"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
