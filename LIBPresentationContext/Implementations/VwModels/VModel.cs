@@ -131,9 +131,10 @@ namespace LIBPresentationContext.Implementations.VwModels
                 var response = await IHelper.DeleteEntity(data);
                 if (response == null ||
                     response.ContainsKey("Error") ||
-                    !response.ContainsKey("Response") ||
-                    Convert.ToInt32(response["Response"]) != (int)Action.DELETED)
+                    !response.ContainsKey("Response"))
                     return;
+
+                await MessagesHelper.AsyncShow("Info Deleted");
                 if (Current != null)
                     List.Remove(Current);
             }
@@ -203,6 +204,10 @@ namespace LIBPresentationContext.Implementations.VwModels
                 if (Action == Action.NEW)
                 {
                     var response = await IHelper.SaveEntity(data);
+                    await MessagesHelper.AsyncShow("Info Saved");
+
+                    await MessagesHelper.AsyncShow("Info Saved");
+
                     if (response == null ||
                         response.ContainsKey("Error") ||
                         !response.ContainsKey("Response") ||
@@ -214,6 +219,10 @@ namespace LIBPresentationContext.Implementations.VwModels
                 else
                 {
                     var response = await IHelper.UpdateEntity(data);
+
+                    await MessagesHelper.AsyncShow("Info Saved");
+
+                    await MessagesHelper.AsyncShow("Info Saved");
                     if (response == null ||
                         response.ContainsKey("Error") ||
                         !response.ContainsKey("Response") ||
@@ -223,6 +232,7 @@ namespace LIBPresentationContext.Implementations.VwModels
                 }
                 Action = Action.NONE;
                 //await IUserControl.ActiveButtons(Action);
+
                 await Cancel();
             }
             catch (Exception ex)

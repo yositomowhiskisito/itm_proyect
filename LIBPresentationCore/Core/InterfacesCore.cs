@@ -53,6 +53,7 @@ namespace LIBPresentationCore.Core
     public interface IUCPopup : IUserControl
     {
         void Show();
+        object Selected { get; set; }
     }
 
     public interface ITile

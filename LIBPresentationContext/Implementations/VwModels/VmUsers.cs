@@ -50,14 +50,13 @@ namespace LIBPresentationContext.Implementations.VwModels
             return true;
         }
 
-        public void LoginCommandExecute(object parameter) { Login(null); }
-
         public async Task<Dictionary<string, object>> Login(Dictionary<string, object> data)
         {
-            var response =  new Dictionary<string, object>();
+            var response = new Dictionary<string, object>();
             try
             {
-                //await IUserControl.Loading(Loading.ADD);
+                
+                await IUserControl.Loading(Loading.ADD);
                 if (data == null)
                     data = new Dictionary<string, object>();
                 response = await ((UsersHelper)IHelper).Login(data);
@@ -75,8 +74,11 @@ namespace LIBPresentationContext.Implementations.VwModels
             }
             finally
             {
-                //await IUserControl.Loading(Loading.REMOVE); 
+                await IUserControl.Loading(Loading.REMOVE); 
             }
         }
+
+        public void LoginCommandExecute(object parameter) { Login(null); }
+
     }
 }

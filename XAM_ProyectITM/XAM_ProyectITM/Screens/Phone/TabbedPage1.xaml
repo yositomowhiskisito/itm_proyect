@@ -4,27 +4,64 @@
     x:Class="XAM_ProyectITM.Screens.Phone.TabbedPage1"
     BarBackgroundColor="White" 
     BarTextColor="Black" 
-    SelectedTabColor="LimeGreen">
+    SelectedTabColor="DeepSkyBlue">
     <!--Pages can be added as references or inline-->
     <ContentPage x:Name="cntPersons"
         Title="Persons"
         IconImageSource="types.png"
         BackgroundColor="White">
-        <Frame CornerRadius="15" 
-            Margin="10"
-            BackgroundColor="White" 
-            HasShadow="True"
-            Padding="5">
-            <ScrollView Orientation="Vertical">
-                <StackLayout>
-                    <Image Margin="5"
-                    HeightRequest="300"
-                    WidthRequest="150"
-                    Source="Persons.gif" 
-                    IsAnimationPlaying="True"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <ActivityIndicator Grid.Row="0" 
+                Grid.RowSpan="2"               
+                Scale="1.5"
+                Color="DeepSkyBlue" 
+                x:Name="aiLoading"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Frame Grid.Row="0"
+                CornerRadius="15" 
+                Margin="10"
+                BackgroundColor="White" 
+                HasShadow="True"
+                Padding="5">
+                <ScrollView Orientation="Vertical">
+                    <StackLayout >
+                        <Image Margin="5"
+                        HeightRequest="300"
+                        WidthRequest="150"
+                        Source="Persons.gif" 
+                        IsAnimationPlaying="True">
+                        </Image>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+
+            <Frame Grid.Row="1"
+                CornerRadius="15" 
+                Margin="5"
+                BackgroundColor="White" 
+                HasShadow="True"
+                Padding="0">
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                        x:Name="imgent"
+                        Source="types.png" 
+                        HeightRequest="60"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SendPersons_1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
-            </ScrollView>
-        </Frame>
+            </Frame>
+        </Grid>
     </ContentPage>
     <ContentPage Title="Users"
         IconImageSource="login.png"

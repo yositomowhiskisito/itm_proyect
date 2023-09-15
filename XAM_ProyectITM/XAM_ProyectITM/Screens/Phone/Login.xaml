@@ -27,13 +27,21 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
+                    <ActivityIndicator Grid.Row="0" 
+                        Grid.Column="0" 
+                        Scale="1.5"
+                        Color="DeepSkyBlue" 
+                        x:Name="aiLoading"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+
                     <Image x:Name="imglogin"
                         Grid.Row="1"
                         Grid.Column="0" 
                         Grid.ColumnSpan="2" 
                         Source="icon.png" 
                         HorizontalOptions="FillAndExpand"/>
-
 
                     <Label Grid.Row="2"
                         Grid.Column="0" 

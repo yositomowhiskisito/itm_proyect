@@ -89,44 +89,44 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Image x:Name="imgdel"
-                        Grid.Column="3"
-                        Source="delete.png"
-                        HorizontalOptions="FillAndExpand">
+                            Grid.Column="3"
+                            Source="delete.png"
+                            HorizontalOptions="FillAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding DeleteCommand}"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <Image x:Name="imgsave"
-                        Grid.Column="4" 
-                        Source="save.png"
-                        HorizontalOptions="FillAndExpand">
+                            Grid.Column="4" 
+                            Source="save.png"
+                            HorizontalOptions="FillAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SaveCommand}"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <Image x:Name="imgup"
-                        Grid.Column="5" 
-                        Source="upload.png" 
-                        HorizontalOptions="FillAndExpand">
+                            Grid.Column="5" 
+                            Source="upload.png" 
+                            HorizontalOptions="FillAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped= "TapGestureRecognizer_Tapped"
-                            NumberOfTapsRequired="1"/>
+                                    NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <Image x:Name="imgpdf"
-                        Grid.Column="6" 
-                        Source="pdf.png" 
-                        IsAnimationPlaying="True"
-                        HorizontalOptions="FillAndExpand">
+                            Grid.Column="6" 
+                            Source="pdf.png" 
+                            IsAnimationPlaying="True"
+                            HorizontalOptions="FillAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped= "TapGestureRecognizer_Tapped"
-                            NumberOfTapsRequired="1"/>
+                                <TapGestureRecognizer Tapped= "TapGestureRecognizer_Tapped_2"
+                                    NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <Image x:Name="imgclose"
-                        Grid.Column="7" 
-                        Source="close.png" 
-                        HorizontalOptions="FillAndExpand">
+                            Grid.Column="7" 
+                            Source="close.png" 
+                            HorizontalOptions="FillAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CloseCommand}"/>
                             </Image.GestureRecognizers>
@@ -164,73 +164,73 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Row="0" 
-                        Grid.Column="0" 
-                        HorizontalOptions="Start" 
-                        VerticalOptions="Center"
-                        Grid.ColumnSpan="2"
-                        FontSize="15" Text="Person "
-                        TextColor="Black"/>
+                            Grid.Column="0" 
+                            HorizontalOptions="Start" 
+                            VerticalOptions="Center"
+                            Grid.ColumnSpan="2"
+                            FontSize="15" Text="Person "
+                            TextColor="Black"/>
 
                         <Label Grid.Row="1" 
-                        Grid.Column="0" 
-                        HorizontalOptions="End"
-                        VerticalOptions="Center"
-                        FontSize="15" 
-                        Text="SSN: "
-                        TextColor="Black"/>
+                            Grid.Column="0" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            FontSize="15" 
+                            Text="SSN: "
+                            TextColor="Black"/>
                         <Entry Grid.Row="1" 
-                        Grid.Column="1" 
-                        Grid.ColumnSpan="3" Margin="2"
-                        x:Name="txSSN" 
-                        Text="{Binding Current.SSN, Mode=TwoWay}"
-                        Keyboard="Numeric"
-                        TextColor="Black"
-                        BackgroundColor="LightGray"/>
+                            Grid.Column="1" 
+                            Grid.ColumnSpan="3" Margin="2"
+                            x:Name="txSSN" 
+                            Text="{Binding Current.SSN, Mode=TwoWay}"
+                            Keyboard="Numeric"
+                            TextColor="Black"
+                            BackgroundColor="LightGray"/>
 
                         <Label Grid.Row="2" 
-                        Grid.Column="0" 
-                        HorizontalOptions="End"
-                        VerticalOptions="Center"
-                        FontSize="15" 
-                        Text="Name: "
-                        TextColor="Black"/>
+                            Grid.Column="0" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            FontSize="15" 
+                            Text="Name: "
+                            TextColor="Black"/>
                         <Entry Grid.Row="2" 
-                        Grid.Column="1" 
-                        Grid.ColumnSpan="3" 
-                        Margin="2"
-                        x:Name="txName" 
-                        Text="{Binding Current.Name, Mode=TwoWay}" 
-                        Keyboard="Default"
-                        TextColor="Black"
-                        BackgroundColor="LightGray"/>
+                            Grid.Column="1" 
+                            Grid.ColumnSpan="3" 
+                            Margin="2"
+                            x:Name="txName" 
+                            Text="{Binding Current.Name, Mode=TwoWay}" 
+                            Keyboard="Default"
+                            TextColor="Black"
+                            BackgroundColor="LightGray"/>
 
                         <Label Grid.Row="3" 
-                        Grid.Column="0" 
-                        HorizontalOptions="End"
-                        VerticalOptions="Center"
-                        FontSize="15" 
-                        Text="Born: "
-                        TextColor="Black"/>
+                            Grid.Column="0" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            FontSize="15" 
+                            Text="Born: "
+                            TextColor="Black"/>
                         <DatePicker Grid.Row="3" 
-                        Grid.Column="1" 
-                        Grid.ColumnSpan="3" 
-                        Margin="2"
-                        x:Name="txBorn" 
-                        Date="{Binding Current.Born, Mode=TwoWay}" 
-                        TextColor="Black"
-                        BackgroundColor="LightGray"/>
+                            Grid.Column="1" 
+                            Grid.ColumnSpan="3" 
+                            Margin="2"
+                            x:Name="txBorn" 
+                            Date="{Binding Current.Born, Mode=TwoWay}" 
+                            TextColor="Black"
+                            BackgroundColor="LightGray"/>
 
                         <Label Grid.Row="4" 
-                        Grid.Column="0"
-                        HorizontalOptions="End"
-                        VerticalOptions="Center"
-                        FontSize="15" Text="State: "
-                        TextColor="Black"/>
+                            Grid.Column="0"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            FontSize="15" Text="State: "
+                            TextColor="Black"/>
                         <CheckBox Grid.Row="4"  
-                        Grid.Column="1"
-                        Margin="5"
-                        x:Name="cbState"
-                        IsChecked="{Binding Current.State, Mode=TwoWay}"/>
+                            Grid.Column="1"
+                            Margin="5"
+                            x:Name="cbState"
+                            IsChecked="{Binding Current.State, Mode=TwoWay}"/>
                     </Grid>
                 </Frame>
 
@@ -303,6 +303,14 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem IconImageSource="delete.png" 
+                                            Text="Delete" 
+                                            Clicked="MenuItem_Clicked"/>
+                                        <MenuItem IconImageSource="edit.png" 
+                                            Text="Edit" 
+                                            Clicked="MenuItem_Clicked"/>
+                                    </ViewCell.ContextActions>
                                     <ContentView>
                                         <Grid Padding="2,15">
                                             <Grid.RowDefinitions>
@@ -319,32 +327,32 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Image Source="{Binding File, Converter={StaticResource ByteArrayToImageSource}}"
-                                            Grid.Column="0"
-                                            Grid.Row="0" />
+                                                Grid.Column="0"
+                                                Grid.Row="0" />
                                             <Label Text="{Binding SSN}" 
-                                            Grid.Column="1" 
-                                            Grid.Row="0" 
-                                            Font="Bold"
-                                            TextColor="Black" 
-                                            HorizontalOptions="Center"/>
+                                                Grid.Column="1" 
+                                                Grid.Row="0" 
+                                                Font="Bold"
+                                                TextColor="Black" 
+                                                HorizontalOptions="Center"/>
                                             <Label Text="{Binding Name}" 
-                                            Grid.Column="2" 
-                                            Grid.Row="0" 
-                                            Font="Bold"
-                                            TextColor="Black" 
-                                            HorizontalOptions="Center"/>
+                                                Grid.Column="2" 
+                                                Grid.Row="0" 
+                                                Font="Bold"
+                                                TextColor="Black" 
+                                                HorizontalOptions="Center"/>
                                             <Label Text="{Binding Born, Converter={StaticResource AgeConverters}}" 
-                                            Grid.Column="3"
-                                            Grid.Row="0"  
-                                            Font="Bold"
-                                            TextColor="Black"
-                                            HorizontalOptions="Center"/>
+                                                Grid.Column="3"
+                                                Grid.Row="0"  
+                                                Font="Bold"
+                                                TextColor="Black"
+                                                HorizontalOptions="Center"/>
                                             <Label Text="{Binding State, Converter={StaticResource BoolConverters}}" 
-                                            Grid.Row="0" 
-                                            Font="Bold"
-                                            Grid.Column="4"
-                                            TextColor="Black"
-                                            HorizontalOptions="Center"/>
+                                                Grid.Row="0" 
+                                                Font="Bold"
+                                                Grid.Column="4"
+                                                TextColor="Black"
+                                                HorizontalOptions="Center"/>
                                         </Grid>
                                     </ContentView>
                                 </ViewCell>

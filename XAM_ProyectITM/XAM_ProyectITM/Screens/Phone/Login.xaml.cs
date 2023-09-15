@@ -35,23 +35,26 @@ namespace XAM_ProyectITM.Screens.Phone
         public object User { get { return this.txUser.Text; } }
         public object Password { get { return this.txPassword.Text; } }
 
-        public void Close(bool noTab = true)
-        {
-            throw new NotImplementedException();
-        }
+        public void Close(bool noTab = true){ }
 
-        public void Detail(bool open = false)
-        {
-            throw new NotImplementedException();
-        }
+        public void Detail(bool open = false){ }
 
         public async  Task Loading(Loading action)
         {
+            try
+            {
+                if (action == LIBPresentationCore.Core.Loading.ADD)
+                    this.aiLoading.IsRunning = true;
+                else
+                    this.aiLoading.IsRunning = false;
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
         }
 
-        public void MoveFocus(Focus focus = LIBPresentationCore.Core.Focus.FIRST)
-        {
-        }
+        public void MoveFocus(Focus focus = LIBPresentationCore.Core.Focus.FIRST){ }
 
         private void btClean_Click(object sender, EventArgs e)
         {
@@ -80,18 +83,6 @@ namespace XAM_ProyectITM.Screens.Phone
                     return;
                 }
                 MainWindow.ActionForm(true);
-                /*if (response == null)
-                {
-                    LogsHelper.Show(RsMain.lbErrorWasHappened);
-                    return;
-                }
-                if (response.ContainsKey("Error"))
-                {
-                    //LogsHelper.Show(response["Error"].ToString());
-                    return;
-                }
-                UserHelper.Login(response);
-                MainWindow.ActionForm(true);*/
             }
             catch (Exception ex)
             {

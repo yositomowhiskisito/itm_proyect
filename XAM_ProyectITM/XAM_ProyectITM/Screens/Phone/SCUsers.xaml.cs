@@ -2,12 +2,14 @@
 using LIBPresentationContext.Implementations.VwModels;
 using LIBPresentationCore.Core;
 using LIBUtilities.Core;
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using XAM_ProyectITM.Screens.Phone.Popups;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -103,6 +105,34 @@ namespace XAM_ProyectITM.Screens.Phone
         }
 
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            try
+            {
+                var data = new Dictionary<string, object>();
+                data["DataBinding"] = this.BindingContext;
+                IUCPopup = new PPPersons(data);
+                ((PopupPage)IUCPopup).BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
+                ((PopupPage)IUCPopup).CloseWhenBackgroundIsClicked = false;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    try
+                    {
+                        await PopupNavigation.Instance.PushAsync((PopupPage)IUCPopup, false);
+                    }
+                    catch (Exception ex)
+                    {
+                        LogsHelper.Logs(ex);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
 
         }

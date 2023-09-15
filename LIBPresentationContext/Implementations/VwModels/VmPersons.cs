@@ -13,12 +13,16 @@ namespace LIBPresentationContext.Implementations.VwModels
 {
     public class VmPersons : VModel<Persons>
     {
+        private IUCPopup IUCPopup;
+
         public VmPersons(Dictionary<string, object> data) : base(data)
         {
             try
             {
                 IHelper = new PersonsHelper();
                 FileCommand = new EventsCommand(FileCommandExecute);
+                SelectedCommand = new EventsCommand(SelectedCommandExecute);
+                SetData(data);
             }
             catch (Exception ex)
             {
@@ -26,7 +30,23 @@ namespace LIBPresentationContext.Implementations.VwModels
             }
         }
 
+        private void SetData(Dictionary<string, object> data)
+        {
+            try
+            {
+                if (data == null)
+                    return;
+                if (data.ContainsKey("View"))
+                    IUCPopup = (IUCPopup)data["View"];
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
         public EventsCommand FileCommand { get; private set; }
+        public EventsCommand SelectedCommand { get; private set; }
 
         public override void Resources()
         {
@@ -104,6 +124,26 @@ namespace LIBPresentationContext.Implementations.VwModels
             }
         }
 
+        public Dictionary<string, object> Selected(Dictionary<string, object> data)
+        {
+            var response = new Dictionary<string, object>();
+            try
+            {
+                if (Current != null)
+                    IUCPopup.Selected = Current;
+                IUCPopup.Close();
+                return response;
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+
+                response["Error"] = ex.ToString();
+                return response;
+            }
+        }
+
         public void FileCommandExecute(object parameter) { File(null); }
+        public void SelectedCommandExecute(object parameter) { Selected(null); }
     }
 }

@@ -45,7 +45,10 @@ namespace LIBPresentationContext.Implementations.Helpers
                     return response;
                 }
                 if (IParser != null && response.ContainsKey("Current"))
-                    response["Entity"] = IParser.ToEntity((Dictionary<string, object>)response["Entity"]);
+                    response["Entity"] = IParser.ToEntity((Dictionary<string, object>)response["Current"]);
+
+                await MessagesHelper.AsyncShow("Info Deleted");
+
                 return response;
             }
             catch (Exception ex)
@@ -78,6 +81,7 @@ namespace LIBPresentationContext.Implementations.Helpers
                         list.Add(IParser.ToEntity((Dictionary<string, object>)item.Value));
                     response["Entities"] = list;
                 }
+
                 return response;
             }
             catch (Exception ex)
@@ -112,6 +116,9 @@ namespace LIBPresentationContext.Implementations.Helpers
                 }
                 if (IParser != null && response.ContainsKey("Current"))
                     response["Current"] = IParser.ToEntity((Dictionary<string, object>)response["Entity"]);
+
+                await MessagesHelper.AsyncShow("Info Saved");
+
                 return response;
             }
             catch (Exception ex)
@@ -146,6 +153,9 @@ namespace LIBPresentationContext.Implementations.Helpers
                 }
                 if (IParser != null && response.ContainsKey("Current"))
                     response["Current"] = IParser.ToEntity((Dictionary<string, object>)response["Entity"]);
+
+                await MessagesHelper.AsyncShow("Info Updated");
+
                 return response;
             }
             catch (Exception ex)

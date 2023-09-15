@@ -47,7 +47,7 @@ namespace LIBDataContext.Implementations
             try
             {
                 var parameters = new List<Parameters>();
-                var current = (Users)data["Entity"];
+                var current = (Users)data["Current"];
                 parameters.Add(new Parameters("Person", SqlDbType.Int, current.Person));
                 parameters.Add(new Parameters("State", SqlDbType.Bit, current.State));
                 parameters.Add(new Parameters("Email", SqlDbType.NVarChar, current.Email));

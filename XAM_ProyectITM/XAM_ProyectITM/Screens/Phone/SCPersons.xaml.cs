@@ -8,6 +8,14 @@ using System.Threading.Tasks;
 using XAM_ProyectITM.Core;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Parsing;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Pdf.Grid;
+using System.IO;
+using System.Reflection;
+using Syncfusion.Drawing;
+using MenuItem = Xamarin.Forms.MenuItem;
 
 namespace XAM_ProyectITM.Screens.Phone
 {
@@ -164,24 +172,39 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
-               /* var data = new Dictionary<string, object>();
-                data["DataBinding"] = this.BindingContext;
-                IUCPopup = new PPTypes(data);
-                ((PopupPage)IUCPopup).BackgroundColor = Color.FromRgba(0, 0, 0, 0.7);
-                ((PopupPage)IUCPopup).CloseWhenBackgroundIsClicked = false;
-
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    try
-                    {
-                        await PopupNavigation.Instance.PushAsync((PopupPage)IUCPopup, false);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        LogsHelper.Logs(ex);
-                    }
-                });*/
+                //Create a new PDF document.
+                PdfDocument doc = new PdfDocument();
+                //Add a page.
+                PdfPage page = doc.Pages.Add();
+                //Create a PdfGrid.
+                PdfGrid pdfGrid = new PdfGrid();
+                //Add values to list.
+                List<object> data = new List<object>();
+                Object row1 = new { ID = "E01", Name = "Clay" };
+                Object row2 = new { ID = "E02", Name = "Thomas" };
+                Object row3 = new { ID = "E03", Name = "Andrew" };
+                Object row4 = new { ID = "E04", Name = "Paul" };
+                Object row5 = new { ID = "E05", Name = "Gray" };
+                data.Add(row1);
+                data.Add(row2);
+                data.Add(row3);
+                data.Add(row4);
+                data.Add(row5);
+                //Add list to IEnumerable.
+                IEnumerable<object> dataTable = data;
+                //Assign data source.
+                pdfGrid.DataSource = dataTable;
+                //Apply built-in table style
+                pdfGrid.ApplyBuiltinStyle(PdfGridBuiltinStyle.GridTable4Accent1);
+                //Draw grid to the page of PDF document.
+                pdfGrid.Draw(page, new PointF(10, 10));
+                //Save the PDF document to stream.
+                MemoryStream stream = new MemoryStream();
+                doc.Save(stream);
+                //Close the document.
+                doc.Close(true);
+                //Save the stream as a file in the device and invoke it for viewing
+                //Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView("Output.pdf", "application/pdf", stream);
             }
             catch (Exception ex)
             {
@@ -203,7 +226,31 @@ namespace XAM_ProyectITM.Screens.Phone
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
+            try
+            {
+               
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
 
+        private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var menuitem = sender as MenuItem;
+                if (menuitem != null)
+                {
+                    var name = menuitem.Text as string;
+                    var result = DisplayAlert("Alert", name, "Ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
         }
     }
 }

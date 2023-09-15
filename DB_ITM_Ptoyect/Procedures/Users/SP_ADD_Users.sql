@@ -33,7 +33,7 @@ BEGIN
 		SET @Id = SCOPE_IDENTITY();
 		
   
-		EXEC [dbo].[SP_ADD_Audits] @Id, 'INSERT', 'Users', @User, 0;
+		EXEC [dbo].[SP_ADD_Audits] @Id, 'INSERT', 'Users', NULL
 		
 		SET @Result = 1;
 		COMMIT TRAN tr
@@ -43,7 +43,7 @@ BEGIN
 		DECLARE @Error NVARCHAR(200);
 		SET  @Error = ERROR_MESSAGE();
 		
-		EXEC [dbo].[SP_ADD_Audits] NULL, @Error, 'SP_Insert_Users', @User, 0;
+		EXEC [dbo].[SP_ADD_Audits] NULL, @Error, 'SP_ADD_Users',  NULL;
 		
 		SELECT @Error;
 		

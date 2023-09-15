@@ -39,6 +39,10 @@ namespace LIBInfrastructure.Implementation
             data["Id"] = entity.Id;
             data["Person"] = entity.Person;
             data["State"] = entity.State;
+            if (!string.IsNullOrEmpty(entity.Email))
+                data["Email"] = entity.Email;
+            if (!string.IsNullOrEmpty(entity.Password))
+                data["Password"] = entity.Password;
             if (entity._Person != null)
                 data["_Person"] = IParserPersons.ToDictionary(entity._Person);
 
@@ -54,6 +58,10 @@ namespace LIBInfrastructure.Implementation
                 entity.Person = Convert.ToInt32(data["Person"].ToString());
             if (data.ContainsKey("State"))
                 entity.State = Convert.ToBoolean(data["State"].ToString());
+            if (data.ContainsKey("Email"))
+                entity.Email = data["Email"].ToString();
+            if (data.ContainsKey("Password"))
+                entity.Password = data["Password"].ToString();
             if (data.ContainsKey("_Person"))
                 entity._Person = IParserPersons.ToEntity((Dictionary<string, object>)data["_Person"]);
             
