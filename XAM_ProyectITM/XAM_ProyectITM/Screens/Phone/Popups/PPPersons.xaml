@@ -2,12 +2,18 @@
 <popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="XAM_ProyectITM.Screens.Phone.Popups.PPPersons"
+    xmlns:c="clr-namespace:XAM_ProyectITM.Core;assembly=XAM_ProyectITM" 
     xmlns:popup ="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:BoolConverters x:Key="BoolConverters"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content >
         <Frame x:Name="Screen"
             HorizontalOptions="Center"
             VerticalOptions="Center"
-            HeightRequest="500"
+            HeightRequest="600"
             WidthRequest="300"
             HasShadow="True"
             CornerRadius="15"
@@ -19,76 +25,91 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="80"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="0"
-                    Grid.Row="0"
+                <Image Grid.Column="0" 
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Source="types.png" 
+                    HeightRequest="40"
+                    WidthRequest="40"
+                    HorizontalOptions="FillAndExpand"/>
+
+                <Label Grid.Column="0" 
+                    Grid.Row="2"
+                    FontSize="30"
                     Text="Persons"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" />
+                    Grid.ColumnSpan="2" 
+                    HorizontalOptions="Center" />
 
-
-                <ListView Grid.Row="2" 
-                    Grid.Column="0" 
+                <Frame Margin="5"
+                    Grid.Row="3" 
+                    Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    x:Name="dgList" 
-                    Margin="10" 
-                    RowHeight="80" 
-                    SeparatorColor="Black" 
-                    BackgroundColor="White"
-                    ItemsSource="{Binding List, Mode=TwoWay}" 
-                    SelectedItem="{Binding Current, Mode=TwoWay}"
-                    VerticalScrollBarVisibility="Always" 
-                    HorizontalScrollBarVisibility="Always"
-                    ItemTapped="dgList_ItemTapped">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ContentView>
-                                    <Grid Padding="2,15">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="20"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
+                    CornerRadius="15" 
+                    HasShadow="True">
 
-                                        <Label Text="{Binding Name}" 
-                                            Grid.Column="0" 
-                                            Grid.Row="0" 
-                                            TextColor="Black" 
-                                            Font="Bold"
-                                            HorizontalOptions="Center"/>
-                                        <Label Text="{Binding State}" 
-                                            Grid.Column="1" 
-                                            Grid.Row="0" 
-                                            TextColor="Black" 
-                                            Font="Bold"
-                                            HorizontalOptions="Center"/>
-                                    </Grid>
-                                </ContentView>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    <ListView 
+                        x:Name="dgList" 
+                        Margin="10" 
+                        RowHeight="80" 
+                        SeparatorColor="Black" 
+                        BackgroundColor="White"
+                        ItemsSource="{Binding List, Mode=TwoWay}" 
+                        SelectedItem="{Binding Current, Mode=TwoWay}"
+                        VerticalScrollBarVisibility="Always" 
+                        HorizontalScrollBarVisibility="Always"
+                        ItemTapped="dgList_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ContentView>
+                                        <Grid Padding="2,15">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
 
-                <ActivityIndicator Grid.Row="2" 
+                                            <Label Text="{Binding Name}" 
+                                                Grid.Column="0" 
+                                                Grid.Row="0" 
+                                                TextColor="Black" 
+                                                Font="Bold"
+                                                HorizontalOptions="Center"/>
+                                            <Label Text="{Binding State, Converter={StaticResource BoolConverters}}"
+                                                Grid.Column="1" 
+                                                Grid.Row="0" 
+                                                TextColor="Black" 
+                                                Font="Bold"
+                                                HorizontalOptions="Center"/>
+                                        </Grid>
+                                    </ContentView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+
+                <ActivityIndicator Grid.Row="0" 
                     Grid.Column="0" 
+                    Scale="1.2"
+                    Color="DeepSkyBlue" 
+                    x:Name="aiLoading"
                     Grid.ColumnSpan="2"
-                    Grid.RowSpan="6"
-                    Color="Black"
-                    HorizontalOptions="Center" 
-                    VerticalOptions="Center" 
-                    Scale="1.5"
-                    x:Name="aiLoading"/>
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
 
-                <Grid Grid.Column="0" 
-                    Grid.Row="3"
+                <Grid Margin="5"
+                    Grid.Column="0" 
+                    Grid.Row="4"
                     Grid.ColumnSpan="2">
 
                     <Grid.ColumnDefinitions>
@@ -96,25 +117,30 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
+                    <Frame Grid.Column="0"
+                        CornerRadius="15" 
+                        HasShadow="True">
+                        <Image
+                            Source="select.jpg" 
+                            HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectedCommand, Mode=OneTime}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
 
-                    <Image Grid.Column="0"
-                        Source="select.jpg" 
-                        HorizontalOptions="Center">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SelectedCommand, Mode=OneTime}"/>
-                        </Image.GestureRecognizers>
-                    </Image>
-
-                    <Image Grid.Column="1" 
-                        Source="close.png" 
-                        HorizontalOptions="Center">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Button_Clicked"/>
-                        </Image.GestureRecognizers>
-                    </Image>
+                    <Frame Grid.Column="1" 
+                        CornerRadius="15" 
+                        HasShadow="True">
+                        <Image Source="close.png" 
+                            HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Button_Clicked"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
                 </Grid>
             </Grid>
-
         </Frame>
 
     </ContentPage.Content>

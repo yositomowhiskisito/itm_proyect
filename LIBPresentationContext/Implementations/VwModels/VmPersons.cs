@@ -124,11 +124,12 @@ namespace LIBPresentationContext.Implementations.VwModels
             }
         }
 
-        public Dictionary<string, object> Selected(Dictionary<string, object> data)
+        public async Task<Dictionary<string, object>> Selected(Dictionary<string, object> data)
         {
             var response = new Dictionary<string, object>();
             try
             {
+                await IUCPopup.Loading(Loading.ADD);
                 if (Current != null)
                     IUCPopup.Selected = Current;
                 IUCPopup.Close();
@@ -140,6 +141,10 @@ namespace LIBPresentationContext.Implementations.VwModels
 
                 response["Error"] = ex.ToString();
                 return response;
+            }
+            finally
+            {
+                await IUserControl.Loading(Loading.REMOVE);
             }
         }
 
