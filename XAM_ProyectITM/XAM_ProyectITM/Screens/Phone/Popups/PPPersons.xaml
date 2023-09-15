@@ -14,7 +14,7 @@
             HorizontalOptions="Center"
             VerticalOptions="Center"
             HeightRequest="600"
-            WidthRequest="300"
+            WidthRequest="350"
             HasShadow="True"
             CornerRadius="15"
             Padding="2"

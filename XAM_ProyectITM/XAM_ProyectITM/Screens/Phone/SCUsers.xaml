@@ -117,7 +117,7 @@
                 <Frame Grid.Row="3" 
                     Grid.Column="0" 
                     Grid.RowSpan="2"
-                    CornerRadius="10" 
+                    CornerRadius="15" 
                     HasShadow="True">
 
                     <Grid Margin="5" 
@@ -223,57 +223,60 @@
                     </Grid>
                 </Frame>
 
-                <StackLayout Grid.Row="3" 
+                <Frame Grid.Row="3" 
                     Grid.Column="1" 
-                    Grid.RowSpan="3">
+                    Grid.RowSpan="3"
+                    CornerRadius="15" 
+                    HasShadow="True">
+                    <StackLayout>
+                        <CarouselView ItemsSource="{Binding List}"
+                            CurrentItem="{Binding Current, Mode=TwoWay}">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame HasShadow="True"
+                                            BorderColor="White"
+                                            CornerRadius="10"
+                                            Margin="2"
+                                            HeightRequest="300"
+                                            WidthRequest="400"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Start">
+                                            <StackLayout>
+                                                <Label Text="{Binding _Person.Name}"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Large"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center" />
+                                                <Image Source="{Binding _Person.Photo}"
+                                                    Aspect="AspectFill"
+                                                    HeightRequest="150"
+                                                    WidthRequest="150"
+                                                    HorizontalOptions="Center" />
+                                                <Label Text="{Binding Email}"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Large"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center" />
+                                                <Label Text="{Binding State,Converter={StaticResource BoolConverters}}"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Large"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
 
-                    <CarouselView ItemsSource="{Binding List}"
-                        CurrentItem="{Binding Current, Mode=TwoWay}">
-                        <CarouselView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Frame HasShadow="True"
-                                        BorderColor="White"
-                                        CornerRadius="10"
-                                        Margin="2"
-                                        HeightRequest="300"
-                                        WidthRequest="400"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Start">
-                                        <StackLayout>
-                                            <Label Text="{Binding _Person.Name}"
-                                                FontAttributes="Bold"
-                                                FontSize="Large"
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="Center" />
-                                            <Image Source="{Binding _Person.Photo}"
-                                                Aspect="AspectFill"
-                                                HeightRequest="150"
-                                                WidthRequest="150"
-                                                HorizontalOptions="Center" />
-                                            <Label Text="{Binding Email}"
-                                                FontAttributes="Bold"
-                                                FontSize="Large"
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="Center" />
-                                            <Label Text="{Binding State,Converter={StaticResource BoolConverters}}"
-                                                FontAttributes="Bold"
-                                                FontSize="Large"
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="Center" />
-                                        </StackLayout>
-                                    </Frame>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CarouselView.ItemTemplate>
-                    </CarouselView>
+                        <IndicatorView x:Name="indicatorView"
+                           IndicatorColor="LightGray"
+                           SelectedIndicatorColor="DarkGray"
+                           HorizontalOptions="Center" />
+                    </StackLayout>
 
-                    <IndicatorView x:Name="indicatorView"
-                       IndicatorColor="LightGray"
-                       SelectedIndicatorColor="DarkGray"
-                       HorizontalOptions="Center" />
-                </StackLayout>
-
+                </Frame>
 
                 <ActivityIndicator Grid.Row="5" 
                     Scale="1.8"
