@@ -27,9 +27,19 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
-                this.aiLoading.IsRunning = true;
                 await Navigation.PushAsync(new SCPersons());
-                this.aiLoading.IsRunning = false;
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
+        private async void SendUsers_1(object sender, EventArgs e)
+        {
+            try
+            {
+                await Navigation.PushAsync(new SCUsers());
             }
             catch (Exception ex)
             {

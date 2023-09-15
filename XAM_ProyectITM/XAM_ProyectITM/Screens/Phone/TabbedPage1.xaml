@@ -33,10 +33,10 @@
                 <ScrollView Orientation="Vertical">
                     <StackLayout >
                         <Image Margin="5"
-                        HeightRequest="300"
-                        WidthRequest="150"
-                        Source="Persons.gif" 
-                        IsAnimationPlaying="True">
+                            HeightRequest="300"
+                            WidthRequest="200"
+                            Source="People.jpg" 
+                            IsAnimationPlaying="False">
                         </Image>
                     </StackLayout>
                 </ScrollView>
@@ -52,7 +52,7 @@
                     <Image
                         x:Name="imgent"
                         Source="types.png" 
-                        HeightRequest="60"
+                        HeightRequest="40"
                         VerticalOptions="Center"
                         HorizontalOptions="FillAndExpand">
                         <Image.GestureRecognizers>
@@ -66,21 +66,49 @@
     <ContentPage Title="Users"
         IconImageSource="login.png"
         BackgroundColor="White">
-        <Frame CornerRadius="15" 
-            Margin="10"
-            BackgroundColor="White" 
-            HasShadow="True"
-            Padding="5">
-            <ScrollView Orientation="Vertical" >
-                <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0"
+                CornerRadius="15" 
+                Margin="10"
+                BackgroundColor="White" 
+                HasShadow="True"
+                Padding="5">
+                <ScrollView Orientation="Vertical" >
+                    <StackLayout>
+                        <Image
+                            HeightRequest="300"
+                            WidthRequest="100"
+                            Source="Users.gif"
+                            IsAnimationPlaying="False"/>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+
+            <Frame Grid.Row="1"
+                CornerRadius="15" 
+                Margin="5"
+                BackgroundColor="White" 
+                HasShadow="True"
+                Padding="0">
+                <StackLayout Orientation="Horizontal">
                     <Image
-                        HeightRequest="300"
-                        WidthRequest="150"
-                        Source="Users.gif"
-                        IsAnimationPlaying="False"/>
+                        x:Name="imgus"
+                        Source="login.png" 
+                        HeightRequest="40"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SendUsers_1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
-            </ScrollView>
-        </Frame>
+            </Frame>
+        </Grid>
     </ContentPage>
     <ContentPage Title="Reports" 
         IconImageSource="details.png"
@@ -91,10 +119,11 @@
             HasShadow="True"
             Padding="5">
             <StackLayout Margin="5">
-                <Image HeightRequest="300"
-                WidthRequest="150"
-                Source="Reports.gif"
-                IsAnimationPlaying="False"/>
+                <Image 
+                    HeightRequest="300"
+                    WidthRequest="100"
+                    Source="Reports.gif"
+                    IsAnimationPlaying="False"/>
             </StackLayout>
         </Frame>
     </ContentPage>

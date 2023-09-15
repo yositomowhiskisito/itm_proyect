@@ -27,8 +27,7 @@
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="80"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -219,6 +218,7 @@
                             Grid.Column="1"
                             Margin="5"
                             x:Name="cbState"
+                            Color="DeepSkyBlue"
                             IsChecked="{Binding Current.State, Mode=TwoWay}"/>
                     </Grid>
                 </Frame>
@@ -279,13 +279,13 @@
                 </Frame>
 
                 <ActivityIndicator Grid.Row="5" 
-                    Scale="1.8"
                     Grid.Column="0" 
-                    Color="black" 
+                    Scale="1.5"
+                    Color="DeepSkyBlue" 
                     x:Name="aiLoading"
                     Grid.ColumnSpan="2"
                     VerticalOptions="Center"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"/>
             </Grid>
         </ScrollView>
 

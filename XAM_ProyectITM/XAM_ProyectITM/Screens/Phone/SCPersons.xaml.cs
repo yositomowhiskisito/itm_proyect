@@ -16,6 +16,7 @@ using System.IO;
 using System.Reflection;
 using Syncfusion.Drawing;
 using MenuItem = Xamarin.Forms.MenuItem;
+using XAM_ProyectITM.Services;
 
 namespace XAM_ProyectITM.Screens.Phone
 {
@@ -71,7 +72,24 @@ namespace XAM_ProyectITM.Screens.Phone
             }
         }
 
-        private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e) { }
+        private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Stream stream = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
+
+                LoadArrayByte(stream);
+
+                if (stream != null)
+                {
+                    image.Source = ImageSource.FromStream(() => stream);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
 
         public void Close(bool open = false)
         {
@@ -107,19 +125,37 @@ namespace XAM_ProyectITM.Screens.Phone
             }
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async Task TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             try
             {
-                var response = await CrossFilePicker.Current.PickFile("images/*");
-                if (response == null)
-                    return;
-                var path = response.FilePath;
-                var name = response.FileName;
-                var array = response.DataArray;
+                Stream stream = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
 
-                IVmMaintenance.Current.File = array;
-                IVmMaintenance.Current.Name = name;
+                LoadArrayByte(stream);
+                if (stream != null)
+                {
+                    image.Source = ImageSource.FromStream(() => stream);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
+        private async void LoadArrayByte(Stream stream)
+        {
+            try
+            {
+                byte[] byteArray;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    stream.CopyTo(ms);
+                    byteArray = ms.ToArray();
+                }
+
+                if (((VmPersons)this.BindingContext).Current != null)
+                    ((VmPersons)this.BindingContext).Current.File = byteArray;
             }
             catch (Exception ex)
             {
