@@ -8,6 +8,7 @@ BEGIN
 			  ,U.[Person]
 			  ,P.[SSN]
 			  ,P.[Name]
+			  ,P.[File]
 			  ,U.[State]
 			  ,U.[Email]
 			  ,'' [Password]

@@ -11,6 +11,62 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Clean.png" />
+    <None Remove="Images\close.png" />
+    <None Remove="Images\config.png" />
+    <None Remove="Images\delete.png" />
+    <None Remove="Images\details.png" />
+    <None Remove="Images\edit.png" />
+    <None Remove="Images\Enter.png" />
+    <None Remove="Images\Hello.gif" />
+    <None Remove="Images\icon.png" />
+    <None Remove="Images\ITM.png" />
+    <None Remove="Images\load.png" />
+    <None Remove="Images\Loader.gif" />
+    <None Remove="Images\Login.png" />
+    <None Remove="Images\pdf.png" />
+    <None Remove="Images\pdf2.gif" />
+    <None Remove="Images\People.jpg" />
+    <None Remove="Images\Persons.gif" />
+    <None Remove="Images\plus.png" />
+    <None Remove="Images\Reports.gif" />
+    <None Remove="Images\save.png" />
+    <None Remove="Images\select.jpg" />
+    <None Remove="Images\splash_logo.png" />
+    <None Remove="Images\types.png" />
+    <None Remove="Images\upload.png" />
+    <None Remove="Images\Users.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Clean.png" />
+    <EmbeddedResource Include="Images\close.png" />
+    <EmbeddedResource Include="Images\config.png" />
+    <EmbeddedResource Include="Images\delete.png" />
+    <EmbeddedResource Include="Images\details.png" />
+    <EmbeddedResource Include="Images\edit.png" />
+    <EmbeddedResource Include="Images\Enter.png" />
+    <EmbeddedResource Include="Images\Hello.gif" />
+    <EmbeddedResource Include="Images\icon.png" />
+    <EmbeddedResource Include="Images\ITM.png" />
+    <EmbeddedResource Include="Images\load.png" />
+    <EmbeddedResource Include="Images\Loader.gif" />
+    <EmbeddedResource Include="Images\Login.png" />
+    <EmbeddedResource Include="Images\pdf.png" />
+    <EmbeddedResource Include="Images\pdf2.gif" />
+    <EmbeddedResource Include="Images\People.jpg" />
+    <EmbeddedResource Include="Images\Persons.gif" />
+    <EmbeddedResource Include="Images\plus.png" />
+    <EmbeddedResource Include="Images\Reports.gif" />
+    <EmbeddedResource Include="Images\save.png" />
+    <EmbeddedResource Include="Images\select.jpg" />
+    <EmbeddedResource Include="Images\splash_logo.png" />
+    <EmbeddedResource Include="Images\types.png" />
+    <EmbeddedResource Include="Images\upload.png" />
+    <EmbeddedResource Include="Images\Users.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
     <PackageReference Include="Syncfusion.Xamarin.Pdf" Version="22.2.12" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />

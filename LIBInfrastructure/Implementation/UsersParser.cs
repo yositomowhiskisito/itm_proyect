@@ -26,10 +26,11 @@ namespace LIBInfrastructure.Implementation
                     Id = Convert.ToInt32(item[1]),
                     SSN = Convert.ToInt32(item[2]),
                     Name = item[3].ToString(),
+                    File = item[4] == LIBUtilities.Core.DBNull.Value ? null : (byte[])item[4],
                 },
-                State = Convert.ToBoolean(item[4]),
-                Email = item[5].ToString(),
-                Password = item[6].ToString()
+                State = Convert.ToBoolean(item[5]),
+                Email = item[6].ToString(),
+                Password = item[7].ToString()
             };
         }
 

@@ -134,7 +134,6 @@ namespace LIBPresentationContext.Implementations.VwModels
                     !response.ContainsKey("Response"))
                     return;
 
-                await MessagesHelper.AsyncShow("Info Deleted");
                 if (Current != null)
                     List.Remove(Current);
             }
@@ -206,8 +205,6 @@ namespace LIBPresentationContext.Implementations.VwModels
                     var response = await IHelper.SaveEntity(data);
                     await MessagesHelper.AsyncShow("Info Saved");
 
-                    await MessagesHelper.AsyncShow("Info Saved");
-
                     if (response == null ||
                         response.ContainsKey("Error") ||
                         !response.ContainsKey("Response") ||
@@ -222,7 +219,6 @@ namespace LIBPresentationContext.Implementations.VwModels
 
                     await MessagesHelper.AsyncShow("Info Saved");
 
-                    await MessagesHelper.AsyncShow("Info Saved");
                     if (response == null ||
                         response.ContainsKey("Error") ||
                         !response.ContainsKey("Response") ||

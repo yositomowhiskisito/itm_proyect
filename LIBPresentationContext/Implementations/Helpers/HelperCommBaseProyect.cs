@@ -33,7 +33,7 @@ namespace LIBPresentationContext.Implementations.Helpers
                     return new Dictionary<string, object>() { { "Error", "lbMissingInfo" } };
                 }
                 if (IParser != null && data.ContainsKey("Current"))
-                    data["Entity"] = IParser.ToDictionary((T)data["Current"]);
+                    data["Current"] = IParser.ToDictionary((T)data["Current"]);
                 Dictionary<string, object> response = null;
                 if (data != null && !data.ContainsKey("Syncronized"))
                     response = await Task.Run(() => ICommunication.DeleteEntity(data));
@@ -41,7 +41,7 @@ namespace LIBPresentationContext.Implementations.Helpers
                     response = await ICommunication.DeleteEntity(data);
                 if (response.ContainsKey("Error"))
                 {
-                    await MessagesHelper.AsyncShow("MessageHelper.GetMessage(response)");
+                    await MessagesHelper.AsyncShow(response["Error"].ToString());
                     return response;
                 }
                 if (IParser != null && response.ContainsKey("Current"))
@@ -71,7 +71,7 @@ namespace LIBPresentationContext.Implementations.Helpers
                     response = await ICommunication.GetList(data);
                 if (response.ContainsKey("Error"))
                 {
-                    await MessagesHelper.AsyncShow("MessageHelper.GetMessage(response)");
+                    await MessagesHelper.AsyncShow(response["Error"].ToString());
                     return response;
                 }
                 if (IParser != null && response.ContainsKey("List"))
@@ -111,7 +111,7 @@ namespace LIBPresentationContext.Implementations.Helpers
                     response = await ICommunication.SaveEntity(data);
                 if (response.ContainsKey("Error"))
                 {
-                    await MessagesHelper.AsyncShow("MessageHelper.GetMessage(response)");
+                    await MessagesHelper.AsyncShow(response["Error"].ToString());
                     return response;
                 }
                 if (IParser != null && response.ContainsKey("Current"))
@@ -148,7 +148,7 @@ namespace LIBPresentationContext.Implementations.Helpers
                     response = await ICommunication.UpdateEntity(data);
                 if (response.ContainsKey("Error"))
                 {
-                    await MessagesHelper.AsyncShow("MessageHelper.GetMessage(response)");
+                    await MessagesHelper.AsyncShow(response["Error"].ToString());
                     return response;
                 }
                 if (IParser != null && response.ContainsKey("Current"))

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LIBUtilities.Core;
+using System;
 using System.Collections.Generic;
 using XAM_ProyectITM.Screens.Phone;
 using Xamarin.Forms;
@@ -19,8 +20,22 @@ namespace XAM_ProyectITM.Core
             var menuLabel = new ContentView
             {
                 Padding = new Thickness(10, 36, 0, 5),
-                Content = new Label { TextColor = Color.Black, Text = "MENU" }
+                Content = new Label { TextColor = Color.Black, Text = "MENU" },
             };
+
+            /*((StackLayout)menuLabel.Content).Children.Add(new Image
+            {
+                Source = ImageSource.FromResource("XAM_ProyectITM.Images.ITM.png"),
+                WidthRequest = 35,
+                VerticalOptions = LayoutOptions.Center,
+                Margin = new Thickness(10, 0)
+            });*/
+            /*((StackLayout)menuLabel.Content).Children.Add(new Label
+            {
+                TextColor = Color.White,
+                VerticalOptions = LayoutOptions.Center,
+                Text = CacheHelper.GetValue("User").ToString()
+            });*/
 
             var layout = new StackLayout
             {
