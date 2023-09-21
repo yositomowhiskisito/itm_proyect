@@ -97,7 +97,7 @@ namespace LIBDataContext.Implementations
             var response = new Dictionary<string, object>();
             try
             {
-                var current = (Users)data["Entity"];
+                var current = (Users)data["Current"];
                 var parameters = new List<Parameters>();
                 parameters.Add(new Parameters("Id", SqlDbType.Int, current.Id));
                 parameters.Add(new Parameters("Person", SqlDbType.Int, current.Person));
@@ -148,7 +148,7 @@ namespace LIBDataContext.Implementations
             var response = new Dictionary<string, object>();
             try
             {
-                var current = (Users)data["Entity"];
+                var current = (Users)data["Current"];
                 var parameters = new List<Parameters>();
                 parameters.Add(new Parameters("Id", SqlDbType.Int, current.Id));
                 parameters.Add(new Parameters("Result", SqlDbType.Int, 0, ParameterDirection.InputOutput));

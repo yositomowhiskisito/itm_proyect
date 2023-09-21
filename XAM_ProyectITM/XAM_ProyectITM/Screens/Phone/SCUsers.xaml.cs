@@ -6,8 +6,6 @@ using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using XAM_ProyectITM.Screens.Phone.Popups;
 using Xamarin.Forms;
@@ -40,11 +38,6 @@ namespace XAM_ProyectITM.Screens.Phone
             {
                 LogsHelper.Logs(ex);
             }
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-
         }
 
         public void Close(bool noTab = true)

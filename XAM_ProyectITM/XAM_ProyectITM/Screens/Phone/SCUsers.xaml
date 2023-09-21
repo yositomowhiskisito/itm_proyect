@@ -12,10 +12,28 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Menu"
-            IconImageSource="ITM.png"
+        <ToolbarItem 
             Clicked="ToolbarItem_Clicked"
+            IconImageSource="config.png"
             Order="Primary"
+            Priority="0">
+        </ToolbarItem>
+        <ToolbarItem Text="About" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
+            Priority="0"/>
+        <ToolbarItem Text="Contact" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
+            Priority="0"/>
+        <ToolbarItem Text="Help" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
+            Priority="0"/>
+
+        <ToolbarItem Text="Style" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
             Priority="0"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -27,7 +45,9 @@
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="0"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -35,16 +55,17 @@
                     <ColumnDefinition Width="*" x:Name ="clList"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" 
+                <Label x:Name="lbUserAccounts"
+                    Grid.Row="0" 
                     Grid.Column="1" 
                     Font="Bold" 
                     HorizontalOptions="Start"
                     FontSize="20" 
                     Text="Users Account"
-                    TextColor="Black"/>
+                    TextColor="{StaticResource colorMain5}"/>
 
-
-                <Frame Grid.Row="2" 
+                <Frame x:Name="frButtons"
+                    Grid.Row="2" 
                     Grid.Column="0" 
                     Margin="2"
                     Grid.ColumnSpan="2"
@@ -57,8 +78,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0"/>
+                            <ColumnDefinition Width="0"/>
                         </Grid.ColumnDefinitions>
 
                         <Image x:Name="imgnew"
@@ -113,117 +134,180 @@
 
                 </Frame>
 
-                <Frame Grid.Row="3" 
+                <Frame x:Name="frDetails"
+                    Grid.Row="3" 
                     Grid.Column="0" 
                     Grid.RowSpan="2"
                     CornerRadius="15" 
                     HasShadow="True">
 
-                    <Grid Margin="5" 
-                        x:Name="grDetail">
+                    <Grid Margin="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="4"/>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="80"/>
                         </Grid.RowDefinitions>
+
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Row="0" 
                             Grid.Column="0" 
-                            HorizontalOptions="Start" 
-                            VerticalOptions="Center"
                             Grid.ColumnSpan="2"
-                            FontSize="15" Text="User "
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start" 
+                            FontSize="15" Text="User"
                             TextColor="Black"/>
 
-                        <Label Grid.Row="1" 
+                        <Frame x:Name="frDetailsUser"
+                            Grid.Row="1"
                             Grid.Column="0" 
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            FontSize="15" 
-                            Text="Email: "
-                            TextColor="Black"/>
-                        <Entry Grid.Row="1" 
-                            Grid.Column="1" 
-                            Grid.ColumnSpan="3" Margin="2"
-                            x:Name="txSSN" 
-                            Text="{Binding Current.Email, Mode=TwoWay}"
-                            TextColor="Black"
-                            BackgroundColor="LightGray"/>
+                            HasShadow="True"
+                            CornerRadius="15"
+                            Grid.ColumnSpan="2">
 
-                        <Label Grid.Row="2" 
-                            Grid.Column="0" 
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            FontSize="15" 
-                            Text="Person: "
-                            TextColor="Black"/>
-                        <Entry Grid.Row="2" 
-                            Grid.Column="1" 
-                            Grid.ColumnSpan="3" 
-                            Margin="2"
-                            x:Name="txName" 
-                            IsEnabled="False"
-                            Text="{Binding Current._Person.Name, Mode=TwoWay}" 
-                            Keyboard="Default"
-                            TextColor="Black"
-                            BackgroundColor="LightGray"/>
-                        <Image Grid.Column="4" 
+                            <Grid Margin="5" 
+                                x:Name="grDetail">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="4"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <Label x:Name="lbEmail"
+                                    Grid.Row="1" 
+                                    Grid.Column="0" 
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    FontSize="15" 
+                                    Text="Email: "
+                                    TextColor="Black"/>
+                                <Entry Grid.Row="1" 
+                                    Grid.Column="1" 
+                                    Grid.ColumnSpan="3" Margin="2"
+                                    x:Name="txSSN" 
+                                    Text="{Binding Current.Email, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    BackgroundColor="LightGray"/>
+
+                                <Label x:Name="lbPerson"
+                                    Grid.Row="2" 
+                                    Grid.Column="0" 
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    FontSize="15" 
+                                    Text="Person: "
+                                    TextColor="Black"/>
+                                <Entry Grid.Row="2" 
+                                    Grid.Column="1" 
+                                    Grid.ColumnSpan="3" 
+                                    Margin="2"
+                                    x:Name="txName" 
+                                    IsEnabled="False"
+                                    Text="{Binding Current._Person.Name, Mode=TwoWay}" 
+                                    Keyboard="Default"
+                                    TextColor="Black"
+                                    BackgroundColor="LightGray"/>
+                                <Image Grid.Column="4" 
+                                    Grid.Row="2" 
+                                    Source="types.png" 
+                                    HorizontalOptions="FillAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                <Label x:Name="lbPassword"
+                                    Grid.Row="3" 
+                                    Grid.Column="0" 
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    FontSize="15" 
+                                    Text="Password: "
+                                    TextColor="Black"/>
+                                <Entry Grid.Row="3" 
+                                    Grid.Column="1" 
+                                    Grid.ColumnSpan="3" 
+                                    Margin="2"
+                                    x:Name="txPass" 
+                                    IsPassword="True"
+                                    Text="{Binding Current.Password, Mode=TwoWay}" 
+                                    Keyboard="Default"
+                                    TextColor="Black"
+                                    BackgroundColor="LightGray"/>
+
+                                <Label x:Name="lbState"
+                                    Grid.Row="4" 
+                                    Grid.Column="0"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    FontSize="15" Text="State: "
+                                    TextColor="Black"/>
+                                <CheckBox x:Name="cbState"
+                                    Grid.Row="4"  
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    Color="DeepSkyBlue"
+                                    IsChecked="{Binding Current.State, Mode=TwoWay}"/>
+                            </Grid>
+
+                        </Frame>
+                        <Frame x:Name="frDetailsButtons"
                             Grid.Row="2" 
-                            Source="types.png" 
-                            HorizontalOptions="FillAndExpand">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-
-                        <Label Grid.Row="3" 
                             Grid.Column="0" 
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            FontSize="15" 
-                            Text="Password: "
-                            TextColor="Black"/>
-                        <Entry Grid.Row="3" 
-                            Grid.Column="1" 
-                            Grid.ColumnSpan="3" 
                             Margin="2"
-                            x:Name="txPass" 
-                            IsPassword="True"
-                            Text="{Binding Current.Password, Mode=TwoWay}" 
-                            Keyboard="Default"
-                            TextColor="Black"
-                            BackgroundColor="LightGray"/>
+                            Grid.ColumnSpan="2"
+                            CornerRadius="10" 
+                            HasShadow="True">
 
-                        <Label Grid.Row="4" 
-                            Grid.Column="0"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            FontSize="15" Text="State: "
-                            TextColor="Black"/>
-                        <CheckBox Grid.Row="4"  
-                            Grid.Column="1"
-                            Margin="5"
-                            x:Name="cbState"
-                            Color="DeepSkyBlue"
-                            IsChecked="{Binding Current.State, Mode=TwoWay}"/>
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <Image x:Name="imgsave2"
+                                    Grid.Column="0" 
+                                    Source="save.png"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image x:Name="imgclose2"
+                                    Grid.Column="1" 
+                                    Source="close.png" 
+                                    HorizontalOptions="FillAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CloseCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+
+                        </Frame>
                     </Grid>
                 </Frame>
 
-                <Frame Grid.Row="3" 
+                <Frame x:Name="frList"
+                    Grid.Row="3" 
                     Grid.Column="1" 
                     Grid.RowSpan="3"
                     CornerRadius="15" 
@@ -234,9 +318,10 @@
                             <CarouselView.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout>
-                                        <Frame HasShadow="True"
+                                        <Frame x:Name="frCarrousel"
+                                            HasShadow="True"
                                             BorderColor="White"
-                                            CornerRadius="10"
+                                            CornerRadius="15"
                                             Margin="2"
                                             HeightRequest="300"
                                             WidthRequest="400"
@@ -278,9 +363,10 @@
 
                 </Frame>
 
-                <ActivityIndicator Grid.Row="5" 
+                <ActivityIndicator Grid.Row="6" 
                     Grid.Column="0" 
                     Scale="1.5"
+                    Margin="5"
                     Color="DeepSkyBlue" 
                     x:Name="aiLoading"
                     Grid.ColumnSpan="2"

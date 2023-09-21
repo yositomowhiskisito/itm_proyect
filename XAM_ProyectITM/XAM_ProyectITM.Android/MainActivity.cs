@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -8,8 +7,10 @@ using XAM_ProyectITM.Core;
 using XAM_ProyectITM.Droid.Core;
 using System.IO;
 using Android.Content;
-using Xamarin.Forms;
 using System.Threading.Tasks;
+using Android.Support.V7.App;
+using XAM_ProyectITM.Services;
+using XAM_ProyectITM.Droid.Services;
 
 namespace XAM_ProyectITM.Droid
 {

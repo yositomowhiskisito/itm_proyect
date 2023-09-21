@@ -7,4 +7,9 @@ namespace XAM_ProyectITM.Services
     {
         Task<Stream> GetImageStreamAsync();
     }
+
+    public interface IStyleService
+    {
+        void GetStyle(string value);
+    }
 }

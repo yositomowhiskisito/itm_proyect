@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:c="clr-namespace:XAM_ProyectITM.Core;assembly=XAM_ProyectITM"         
-    x:Class="XAM_ProyectITM.Screens.Phone.SCPersons" 
+    x:Class="XAM_ProyectITM.Screens.Phone.SCPersons"
     BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -11,11 +11,18 @@
             <c:ByteArrayToImageSource x:Key="ByteArrayToImageSource"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Menu"
-            IconImageSource="ITM.png"
+    <ContentPage.ToolbarItems >
+        <ToolbarItem Text="Help" 
             Clicked="ToolbarItem_Clicked"
-            Order="Primary"
+            Order="Secondary"
+            Priority="0"/>
+        <ToolbarItem Text="About" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
+            Priority="0"/>
+        <ToolbarItem Text="Contact" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
             Priority="0"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -58,10 +65,10 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0"/>
+                            <ColumnDefinition Width="0"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0"/>
                         </Grid.ColumnDefinitions>
 
                         <Image x:Name="imgnew"
@@ -138,99 +145,166 @@
                 <Frame Grid.Row="3" 
                     Grid.Column="0" 
                     Grid.RowSpan="2"
-                    CornerRadius="10" 
-                    HasShadow="True">
+                    HasShadow="True"
+                    CornerRadius="15" 
+                    Grid.ColumnSpan="2">
 
-                    <Grid Margin="5" 
-                        x:Name="grDetail">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="4"/>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="80"/>
                         </Grid.RowDefinitions>
+
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
+
                         <Label Grid.Row="0" 
-                            Grid.Column="0" 
+                            Grid.Column="0"
                             HorizontalOptions="Start" 
                             VerticalOptions="Center"
                             Grid.ColumnSpan="2"
                             FontSize="15" Text="Person "
                             TextColor="Black"/>
-
-                        <Label Grid.Row="1" 
-                            Grid.Column="0" 
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            FontSize="15" 
-                            Text="SSN: "
-                            TextColor="Black"/>
-                        <Entry Grid.Row="1" 
-                            Grid.Column="1" 
-                            Grid.ColumnSpan="3" Margin="2"
-                            x:Name="txSSN" 
-                            Text="{Binding Current.SSN, Mode=TwoWay}"
-                            Keyboard="Numeric"
-                            TextColor="Black"
-                            BackgroundColor="LightGray"/>
-
-                        <Label Grid.Row="2" 
-                            Grid.Column="0" 
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            FontSize="15" 
-                            Text="Name: "
-                            TextColor="Black"/>
-                        <Entry Grid.Row="2" 
-                            Grid.Column="1" 
-                            Grid.ColumnSpan="3" 
-                            Margin="2"
-                            x:Name="txName" 
-                            Text="{Binding Current.Name, Mode=TwoWay}" 
-                            Keyboard="Default"
-                            TextColor="Black"
-                            BackgroundColor="LightGray"/>
-
-                        <Label Grid.Row="3" 
-                            Grid.Column="0" 
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            FontSize="15" 
-                            Text="Born: "
-                            TextColor="Black"/>
-                        <DatePicker Grid.Row="3" 
-                            Grid.Column="1" 
-                            Grid.ColumnSpan="3" 
-                            Margin="2"
-                            x:Name="txBorn" 
-                            Date="{Binding Current.Born, Mode=TwoWay}" 
-                            TextColor="Black"
-                            BackgroundColor="LightGray"/>
-
-                        <Label Grid.Row="4" 
+                        
+                        <Frame Grid.Row="1"
+                            CornerRadius="15" 
+                            HasShadow="True"
                             Grid.Column="0"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            FontSize="15" Text="State: "
-                            TextColor="Black"/>
-                        <CheckBox Grid.Row="4"  
-                            Grid.Column="1"
-                            Margin="5"
-                            x:Name="cbState"
-                            IsChecked="{Binding Current.State, Mode=TwoWay}"/>
+                            Grid.ColumnSpan="2">
+
+                            <Grid Margin="5" 
+                                x:Name="grDetail">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="4"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="1" 
+                                    Grid.Column="0" 
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    FontSize="15" 
+                                    Text="SSN: "
+                                    TextColor="Black"/>
+                                <Entry Grid.Row="1" 
+                                    Grid.Column="1" 
+                                    Grid.ColumnSpan="3" Margin="2"
+                                    x:Name="txSSN" 
+                                    Text="{Binding Current.SSN, Mode=TwoWay}"
+                                    Keyboard="Numeric"
+                                    TextColor="Black"
+                                    BackgroundColor="LightGray"/>
+
+                                <Label Grid.Row="2" 
+                                    Grid.Column="0" 
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    FontSize="15" 
+                                    Text="Name: "
+                                    TextColor="Black"/>
+                                <Entry Grid.Row="2" 
+                                    Grid.Column="1" 
+                                    Grid.ColumnSpan="3" 
+                                    Margin="2"
+                                    x:Name="txName" 
+                                    Text="{Binding Current.Name, Mode=TwoWay}" 
+                                    Keyboard="Default"
+                                    TextColor="Black"
+                                    BackgroundColor="LightGray"/>
+
+                                <Label Grid.Row="3" 
+                                    Grid.Column="0" 
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    FontSize="15" 
+                                    Text="Born: "
+                                    TextColor="Black"/>
+                                <DatePicker Grid.Row="3" 
+                                    Grid.Column="1" 
+                                    Grid.ColumnSpan="3" 
+                                    Margin="2"
+                                    x:Name="txBorn" 
+                                    Date="{Binding Current.Born, Mode=TwoWay}" 
+                                    TextColor="Black"
+                                    BackgroundColor="LightGray"/>
+
+                                <Label Grid.Row="4" 
+                                    Grid.Column="0"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    FontSize="15" Text="State: "
+                                    TextColor="Black"/>
+                                <CheckBox Grid.Row="4"  
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    x:Name="cbState"
+                                    Color="DeepSkyBlue"
+                                    IsChecked="{Binding Current.State, Mode=TwoWay}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Grid.Row="2" 
+                            Grid.Column="0" 
+                            Margin="2"
+                            Grid.ColumnSpan="2"
+                            CornerRadius="10" 
+                            HasShadow="True">
+
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                
+                                <Image x:Name="imgsave2"
+                                    Grid.Column="0" 
+                                    Source="save.png"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image x:Name="imgup2"
+                                    Grid.Column="1" 
+                                    Source="upload.png" 
+                                    HorizontalOptions="FillAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped= "TapGestureRecognizer_Tapped_1"
+                                    NumberOfTapsRequired="1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image x:Name="imgclose2"
+                                    Grid.Column="2" 
+                                    Source="close.png" 
+                                    HorizontalOptions="FillAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CloseCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+
+                        </Frame>
                     </Grid>
                 </Frame>
 
@@ -363,6 +437,7 @@
                 <ActivityIndicator Grid.Row="5" 
                     Grid.Column="0" 
                     Scale="1.5"
+                    Margin="5"
                     Color="DeepSkyBlue" 
                     x:Name="aiLoading"
                     Grid.ColumnSpan="2"
@@ -373,7 +448,9 @@
                     Grid.Row="6" 
                     Grid.Column="0" 
                     Grid.ColumnSpan="2"/>
+
             </Grid>
+
         </ScrollView>
         
     </ContentPage.Content>

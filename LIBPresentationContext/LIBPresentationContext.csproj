@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="itext7" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LIBCommunicationContext\LIBCommunicationContext.csproj" />
     <ProjectReference Include="..\LIBDomainContext\LIBDomainContext.csproj" />
     <ProjectReference Include="..\LIBDomainEntities\LIBDomainEntities.csproj" />

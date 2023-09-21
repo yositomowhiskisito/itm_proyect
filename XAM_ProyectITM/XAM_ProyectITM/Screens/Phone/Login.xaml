@@ -61,6 +61,7 @@
                         Grid.Column="1" 
                         Margin="5" 
                         x:Name="txUser"
+                        TextColor="Black"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="FillAndExpand" 
                         Placeholder=" "
@@ -76,11 +77,12 @@
                         Grid.Column="1" 
                         Margin="5" 
                         IsPassword="True"
-                        VerticalOptions="CenterAndExpand"
                         x:Name="txPassword" 
-                        HorizontalOptions="FillAndExpand" 
                         Placeholder=" "
-                        BackgroundColor="#EAEAEA"/>
+                        TextColor="Black"
+                        BackgroundColor="#EAEAEA"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="FillAndExpand" />
 
                     <Frame Grid.Row="5" 
                         Grid.Column="0"

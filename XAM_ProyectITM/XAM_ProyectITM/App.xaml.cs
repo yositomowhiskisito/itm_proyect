@@ -15,8 +15,6 @@ namespace XAM_ProyectITM
             InitializeComponent();
             LIBCommunicationContext.Communication.Base = "192.168.100.5";
 
-            Application.Current.UserAppTheme = OSAppTheme.Dark;
-
             MessagesHelper.IMessage = new MessageXAM();
 
             CreateCache();
