@@ -62,6 +62,7 @@
                         Margin="5" 
                         x:Name="txUser"
                         TextColor="Black"
+                        TextChanged="TextChanged"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="FillAndExpand" 
                         Placeholder=" "
@@ -80,11 +81,13 @@
                         x:Name="txPassword" 
                         Placeholder=" "
                         TextColor="Black"
+                        TextChanged="TextChanged"
                         BackgroundColor="#EAEAEA"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="FillAndExpand" />
 
-                    <Frame Grid.Row="5" 
+                    <Frame x:Name="frimdel"
+                        Grid.Row="5" 
                         Grid.Column="0"
                         CornerRadius="15" 
                         HasShadow="True">
@@ -99,7 +102,8 @@
                         </Image>
                     </Frame>
 
-                    <Frame Grid.Row="5" 
+                    <Frame x:Name="frEnt"
+                        Grid.Row="5" 
                         Grid.Column="1"
                         CornerRadius="15" 
                         HasShadow="True">

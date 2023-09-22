@@ -104,7 +104,6 @@ namespace LIBDataContext.Implementations
                 parameters.Add(new Parameters("State", SqlDbType.Bit, current.State));
                 parameters.Add(new Parameters("Email", SqlDbType.NVarChar, current.Email));
                 parameters.Add(new Parameters("Password", SqlDbType.NVarChar, current.Password));
-                parameters.Add(new Parameters("User", SqlDbType.Int, null));
                 parameters.Add(new Parameters("Result", SqlDbType.Int, 0, ParameterDirection.InputOutput));
 
                 data["Query"] = "SP_UPDATE_Users";

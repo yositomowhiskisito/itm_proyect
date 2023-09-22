@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:c="clr-namespace:XAM_ProyectITM.Core;assembly=XAM_ProyectITM"         
     x:Class="XAM_ProyectITM.Screens.Phone.SCPersons"
-    BackgroundColor="White">
+    x:Name="cpPersons">
     <ContentPage.Resources>
         <ResourceDictionary>
             <c:BoolConverters x:Key="BoolConverters"/>
@@ -12,15 +12,11 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems >
-        <ToolbarItem Text="Help" 
+        <ToolbarItem Text="Dark" 
             Clicked="ToolbarItem_Clicked"
             Order="Secondary"
             Priority="0"/>
-        <ToolbarItem Text="About" 
-            Clicked="ToolbarItem_Clicked"
-            Order="Secondary"
-            Priority="0"/>
-        <ToolbarItem Text="Contact" 
+        <ToolbarItem Text="Ligth" 
             Clicked="ToolbarItem_Clicked"
             Order="Secondary"
             Priority="0"/>
@@ -43,16 +39,17 @@
                     <ColumnDefinition Width="*" x:Name ="clList"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" 
+                <Label x:Name="lbTitle" 
+                    Grid.Row="0" 
                     Grid.Column="1" 
                     Font="Bold" 
                     HorizontalOptions="Start"
                     FontSize="20" 
-                    Text="Persons"
-                    TextColor="Black"/>
+                    Text="Persons"/>
 
 
-                <Frame Grid.Row="2" 
+                <Frame x:Name="fmButtons" 
+                    Grid.Row="2" 
                     Grid.Column="0" 
                     Margin="2"
                     Grid.ColumnSpan="2"
@@ -72,25 +69,25 @@
                         </Grid.ColumnDefinitions>
 
                         <Image x:Name="imgnew"
-                        Grid.Column="0"
-                        Source="plus.png"
-                        HorizontalOptions="FillAndExpand">
+                            Grid.Column="0"
+                            Source="plus.png"
+                            HorizontalOptions="FillAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding NewCommand}"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <Image x:Name="imgupdate"
-                        Grid.Column="1" 
-                        Source="edit.png" 
-                        HorizontalOptions="FillAndExpand">
+                            Grid.Column="1" 
+                            Source="edit.png" 
+                            HorizontalOptions="FillAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding UpdateCommand}"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <Image x:Name="imgload"
-                        Grid.Column="2" 
-                        Source="load.png" 
-                        HorizontalOptions="FillAndExpand">
+                            Grid.Column="2" 
+                            Source="load.png" 
+                            HorizontalOptions="FillAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding LoadCommand}"/>
                             </Image.GestureRecognizers>
@@ -142,7 +139,8 @@
 
                 </Frame>
 
-                <Frame Grid.Row="3" 
+                <Frame x:Name="fmDetails"
+                    Grid.Row="3" 
                     Grid.Column="0" 
                     Grid.RowSpan="2"
                     HasShadow="True"
@@ -168,9 +166,11 @@
                             VerticalOptions="Center"
                             Grid.ColumnSpan="2"
                             FontSize="15" Text="Person "
+                            Font="Bold"
                             TextColor="Black"/>
-                        
-                        <Frame Grid.Row="1"
+
+                        <Frame x:Name="fmDetailP"
+                            Grid.Row="1"
                             CornerRadius="15" 
                             HasShadow="True"
                             Grid.Column="0"
@@ -308,10 +308,13 @@
                     </Grid>
                 </Frame>
 
-                <Frame Grid.Row="3"
+                <Frame 
+                    Grid.Row="3"
                     Grid.Column="1"
                     CornerRadius="10" 
-                    HasShadow="True">
+                    HasShadow="True"
+                    Margin="5"
+                    Padding="15">
 
                     <Grid BackgroundColor="White"
                         HeightRequest="50">
@@ -326,40 +329,36 @@
                             Font="Bold" 
                             Text="Photo" 
                             FontSize="16"
-                            TextColor="Black"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label Grid.Column="1" 
                             Text="SSN" 
                             Font="Bold" 
                             FontSize="16"
-                            TextColor="Black"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label Grid.Column="2" 
                             Text="Name" 
                             Font="Bold" 
                             FontSize="16"
-                            TextColor="Black"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label Grid.Column="3" 
                             Text="Born"
                             Font="Bold" 
                             FontSize="16"
-                            TextColor="Black"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label Grid.Column="4" 
                             Text="State"
                             Font="Bold" 
                             FontSize="16"
-                            TextColor="Black"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                     </Grid>
                 </Frame>
-                <Frame Grid.Row="4" 
+                <Frame Margin="5"
+                    Grid.Row="4" 
                     Grid.Column="1"
                     CornerRadius="10" 
                     HasShadow="True">
@@ -406,13 +405,13 @@
                                                 Grid.Column="1" 
                                                 Grid.Row="0" 
                                                 Font="Bold"
-                                                TextColor="Black" 
+                                                TextColor="Black"
                                                 HorizontalOptions="Center"/>
                                             <Label Text="{Binding Name}" 
                                                 Grid.Column="2" 
                                                 Grid.Row="0" 
-                                                Font="Bold"
-                                                TextColor="Black" 
+                                                Font="Bold" 
+                                                TextColor="Black"
                                                 HorizontalOptions="Center"/>
                                             <Label Text="{Binding Born, Converter={StaticResource AgeConverters}}" 
                                                 Grid.Column="3"
@@ -434,11 +433,11 @@
                     </ListView>
                 </Frame>
 
-                <ActivityIndicator Grid.Row="5" 
+                <ActivityIndicator
+                    Grid.Row="5" 
                     Grid.Column="0" 
                     Scale="1.5"
                     Margin="5"
-                    Color="DeepSkyBlue" 
                     x:Name="aiLoading"
                     Grid.ColumnSpan="2"
                     VerticalOptions="Center"

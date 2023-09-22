@@ -92,7 +92,7 @@ namespace LIBApplicationContext.Implementations
             {
                 if (IParser != null)
                     data["Current"] = IParser.ToEntity((Dictionary<string, object>)data["Current"]);
-                var current = (Persons)data["Current"];
+                var current = (Users)data["Current"];
                 if (current == null || current.Id == 0)
                 {
                     response["Message"] = "lbItemCantProcess";

@@ -22,6 +22,7 @@ namespace XAM_ProyectITM.Screens.Phone
             try
             {
                 InitializeComponent();
+                TextChanged(null, null);
                 var data = new Dictionary<string, object>();
                 data["Screen"] = this;
                 VwModel = new VmUsers(data);
@@ -60,8 +61,10 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
+                this.frimdel.BackgroundColor = Color.DeepSkyBlue;
                 this.txUser.Text = string.Empty;
                 this.txPassword.Text = string.Empty;
+                this.frimdel.BackgroundColor = Color.White;
             }
             catch (Exception ex)
             {
@@ -73,6 +76,7 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
+                this.frEnt.BackgroundColor = Color.DeepSkyBlue;
                 var data = new Dictionary<string, object>();
                 data["Email"] = this.txUser.Text;
                 data["Password"] = this.txPassword.Text;
@@ -82,7 +86,29 @@ namespace XAM_ProyectITM.Screens.Phone
                     //LogsHelper.Show(response["Error"].ToString());
                     return;
                 }
+
+                this.frEnt.BackgroundColor = Color.White;
                 MainWindow.ActionForm(true);
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
+        private void TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (this.txPassword.Text == string.Empty || this.txPassword.Text == null)
+                    this.txPassword.BackgroundColor = Color.Pink;
+                else
+                    this.txPassword.BackgroundColor = Color.LightGray;
+
+                if (this.txUser.Text == string.Empty || this.txUser.Text == null)
+                    this.txUser.BackgroundColor = Color.Pink;
+                else
+                this.txUser.BackgroundColor = Color.LightGray;
             }
             catch (Exception ex)
             {

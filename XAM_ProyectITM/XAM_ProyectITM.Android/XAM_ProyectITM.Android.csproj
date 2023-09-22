@@ -60,6 +60,15 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="itext.bouncy-castle-adapter">
+      <Version>8.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="itext7.bouncy-castle-adapter">
+      <Version>8.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="itext7.bouncy-castle-fips-adapter">
+      <Version>8.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.v4">
       <Version>28.0.0.3</Version>
     </PackageReference>

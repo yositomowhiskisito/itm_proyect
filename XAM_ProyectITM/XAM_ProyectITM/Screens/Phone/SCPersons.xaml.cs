@@ -12,7 +12,7 @@ using System.IO;
 using MenuItem = Xamarin.Forms.MenuItem;
 using XAM_ProyectITM.Services;
 using Plugin.XamarinFormsSaveOpenPDFPackage;
-using System.Net.Http;
+using LIBPresentationContext.Implementations.Helpers.PdfHelper;
 
 namespace XAM_ProyectITM.Screens.Phone
 {
@@ -24,12 +24,39 @@ namespace XAM_ProyectITM.Screens.Phone
 
         public SCPersons()
         {
-            InitializeComponent();
-            var data = new Dictionary<string, object>();
-            data.Add("View", this);
-            IVmMaintenance = new VmPersons(data);
-            this.BindingContext = IVmMaintenance;
-            UserControl_Loaded(null, null);
+            try
+            {
+                InitializeComponent();
+
+                ConfigColor();
+
+                var data = new Dictionary<string, object>();
+                data.Add("View", this);
+                IVmMaintenance = new VmPersons(data);
+                this.BindingContext = IVmMaintenance;
+                UserControl_Loaded(null, null);
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
+        private void ConfigColor()
+        {
+            try
+            {
+                this.lbTitle.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.DeepSkyBlue);
+                this.cpPersons.SetAppThemeColor(ContentPage.BackgroundColorProperty, Color.White, Color.DarkGray);
+                this.fmButtons.SetAppThemeColor(Frame.BackgroundColorProperty, Color.White, Color.DarkGray);
+                this.fmDetails.SetAppThemeColor(Frame.BackgroundColorProperty, Color.White, Color.DarkGray);
+                this.aiLoading.SetAppThemeColor(ActivityIndicator.ColorProperty, Color.Black, Color.DeepSkyBlue);
+
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
         }
 
         private async void UserControl_Loaded(object p1, object p2)
@@ -185,14 +212,7 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
-                /*var result = (VmPersons)this.BindingContext;
-                var dic = JsonHelper.ConvertToObject(result.Current.ExtraInfo);
-                result.Latitude = (string)dic["Latitude"];
-                result.Longitude = (string)dic["Longitude"];
 
-                this.grDetail.IsVisible = true;
-                this.clList.Width = new GridLength(0);
-                this.clDetail.Width = new GridLength(1, GridUnitType.Star);*/
             }
             catch (Exception ex)
             {
@@ -204,23 +224,28 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
-                var httpClient = new HttpClient();
+                var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "test.pdf");
+                var helper = new HelperPdf();
 
-                var stream = await httpClient.GetStreamAsync("https://riptutorial.com/Download/xamarin-android.pdf");
-                using (var memoryStream = new MemoryStream())
+                var docpdf = helper.CreatePdf2(((VmPersons)this.BindingContext).List, backingFile);
+
+                await CrossXamarinFormsSaveOpenPDFPackage.Current.SaveAndView("Persons.pdf", "application/pdf", docpdf, PDFOpenContext.InApp);
+                
+                //var httpClient = new HttpClient();
+                //var stream = await httpClient.GetStreamAsync("https://riptutorial.com/Download/xamarin-android.pdf");
+
+                /*using (var memoryStream = new MemoryStream())
                 {
                     await stream.CopyToAsync(memoryStream);
                     await CrossXamarinFormsSaveOpenPDFPackage.Current.SaveAndView("myFile.pdf", "application/pdf", memoryStream, PDFOpenContext.InApp);
-                }
-
-                var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "test.txt");
-
+                }*/
             }
             catch (Exception ex)
             {
                 LogsHelper.Logs(ex);
             }
         }
+
 
         public async Task ActiveButtons(LIBUtilities.Core.Action temp)
         {
@@ -238,7 +263,10 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
-                
+                if (((ToolbarItem)sender).Text == "Ligth")
+                    Application.Current.UserAppTheme = OSAppTheme.Light;
+                if (((ToolbarItem)sender).Text == "Dark")
+                Application.Current.UserAppTheme = OSAppTheme.Dark;
             }
             catch (Exception ex)
             {
