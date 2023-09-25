@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:c="clr-namespace:XAM_ProyectITM.Core;assembly=XAM_ProyectITM"         
+    xmlns:c="clr-namespace:XAM_ProyectITM.Core;assembly=XAM_ProyectITM" 
+    xmlns:rs="clr-namespace:LIBPresentationContext.Core.Resources;assembly=LIBPresentationContext"
     x:Class="XAM_ProyectITM.Screens.Phone.SCPersons"
     x:Name="cpPersons">
     <ContentPage.Resources>
@@ -42,11 +43,10 @@
                 <Label x:Name="lbTitle" 
                     Grid.Row="0" 
                     Grid.Column="1" 
-                    Font="Bold" 
+                    FontAttributes="Bold" 
                     HorizontalOptions="Start"
                     FontSize="20" 
-                    Text="Persons"/>
-
+                    Text="{x:Static rs:RsPersons.lbTitle}"/>
 
                 <Frame x:Name="fmButtons" 
                     Grid.Row="2" 
@@ -165,8 +165,8 @@
                             HorizontalOptions="Start" 
                             VerticalOptions="Center"
                             Grid.ColumnSpan="2"
-                            FontSize="15" Text="Person "
-                            Font="Bold"
+                            FontSize="15" Text="{x:Static rs:RsPersons.lbTitleSingle}"
+                            FontAttributes="Bold"
                             TextColor="Black"/>
 
                         <Frame x:Name="fmDetailP"
@@ -203,61 +203,70 @@
                                     HorizontalOptions="End"
                                     VerticalOptions="Center"
                                     FontSize="15" 
-                                    Text="SSN: "
+                                    Text="{x:Static rs:RsPersons.lbSSN}"
                                     TextColor="Black"/>
-                                <Entry Grid.Row="1" 
-                                    Grid.Column="1" 
-                                    Grid.ColumnSpan="3" Margin="2"
+                                <Entry Margin="2"
+                                    Grid.Row="1" 
+                                    Grid.Column="1"  
                                     x:Name="txSSN" 
-                                    Text="{Binding Current.SSN, Mode=TwoWay}"
                                     Keyboard="Numeric"
                                     TextColor="Black"
-                                    BackgroundColor="LightGray"/>
+                                    Grid.ColumnSpan="3"
+                                    TextChanged="TextChanged"
+                                    BackgroundColor="LightGray"
+                                    Text="{Binding Current.SSN, Mode=TwoWay}"/>
 
                                 <Label Grid.Row="2" 
                                     Grid.Column="0" 
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Center"
                                     FontSize="15" 
-                                    Text="Name: "
-                                    TextColor="Black"/>
-                                <Entry Grid.Row="2" 
+                                    Text="{x:Static rs:RsPersons.lbName}"
+                                    TextColor="Black"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"/>
+                                <c:CustomEntry Grid.Row="2" 
                                     Grid.Column="1" 
-                                    Grid.ColumnSpan="3" 
                                     Margin="2"
-                                    x:Name="txName" 
-                                    Text="{Binding Current.Name, Mode=TwoWay}" 
+                                    x:Name="txName"  
                                     Keyboard="Default"
                                     TextColor="Black"
-                                    BackgroundColor="LightGray"/>
+                                    Grid.ColumnSpan="3"
+                                    CornerRadius="15"
+                                    BorderColor="DimGray"
+                                    Placeholder="Name Person"
+                                    TextChanged="TextChanged"
+                                    IsCurvedCornersEnabled="True"
+                                    Text="{Binding Current.Name, Mode=TwoWay}" />
 
                                 <Label Grid.Row="3" 
                                     Grid.Column="0" 
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Center"
                                     FontSize="15" 
-                                    Text="Born: "
-                                    TextColor="Black"/>
+                                    Text="{x:Static rs:RsPersons.lbBorn}"
+                                    TextColor="Black"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"/>
                                 <DatePicker Grid.Row="3" 
                                     Grid.Column="1" 
-                                    Grid.ColumnSpan="3" 
                                     Margin="2"
-                                    x:Name="txBorn" 
-                                    Date="{Binding Current.Born, Mode=TwoWay}" 
+                                    x:Name="txBorn"  
                                     TextColor="Black"
-                                    BackgroundColor="LightGray"/>
+                                    Grid.ColumnSpan="3" 
+                                    DateSelected="txBorn_DateSelected"
+                                    BackgroundColor="LightGray"
+                                    Date="{Binding Current.Born, Mode=TwoWay}"/>
 
                                 <Label Grid.Row="4" 
                                     Grid.Column="0"
+                                    FontSize="15" 
+                                    Text="{x:Static rs:RsPersons.lbState}"
+                                    TextColor="Black"
                                     HorizontalOptions="End"
-                                    VerticalOptions="Center"
-                                    FontSize="15" Text="State: "
-                                    TextColor="Black"/>
+                                    VerticalOptions="Center"/>
                                 <CheckBox Grid.Row="4"  
                                     Grid.Column="1"
                                     Margin="5"
                                     x:Name="cbState"
                                     Color="DeepSkyBlue"
+                                    CheckedChanged="cbState_CheckedChanged"
                                     IsChecked="{Binding Current.State, Mode=TwoWay}"/>
                             </Grid>
                         </Frame>
@@ -276,7 +285,6 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                
                                 <Image x:Name="imgsave2"
                                     Grid.Column="0" 
                                     Source="save.png"
@@ -326,32 +334,32 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                            Font="Bold" 
-                            Text="Photo" 
+                            FontAttributes="Bold" 
+                            Text="{x:Static rs:RsPersons.tbPhoto}" 
                             FontSize="16"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label Grid.Column="1" 
-                            Text="SSN" 
-                            Font="Bold" 
+                            Text="{x:Static rs:RsPersons.tbSSN}" 
+                            FontAttributes="Bold" 
                             FontSize="16"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label Grid.Column="2" 
-                            Text="Name" 
-                            Font="Bold" 
+                            Text="{x:Static rs:RsPersons.tbName}" 
+                            FontAttributes="Bold" 
                             FontSize="16"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label Grid.Column="3" 
-                            Text="Born"
-                            Font="Bold" 
+                            Text="{x:Static rs:RsPersons.tbBorn}"
+                            FontAttributes="Bold" 
                             FontSize="16"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
                         <Label Grid.Column="4" 
-                            Text="State"
-                            Font="Bold" 
+                            Text="{x:Static rs:RsPersons.tbState}"
+                            FontAttributes="Bold" 
                             FontSize="16"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"/>
@@ -404,24 +412,24 @@
                                             <Label Text="{Binding SSN}" 
                                                 Grid.Column="1" 
                                                 Grid.Row="0" 
-                                                Font="Bold"
+                                                FontAttributes="Bold"
                                                 TextColor="Black"
                                                 HorizontalOptions="Center"/>
                                             <Label Text="{Binding Name}" 
                                                 Grid.Column="2" 
                                                 Grid.Row="0" 
-                                                Font="Bold" 
+                                                FontAttributes="Bold" 
                                                 TextColor="Black"
                                                 HorizontalOptions="Center"/>
                                             <Label Text="{Binding Born, Converter={StaticResource AgeConverters}}" 
                                                 Grid.Column="3"
                                                 Grid.Row="0"  
-                                                Font="Bold"
+                                                FontAttributes="Bold"
                                                 TextColor="Black"
                                                 HorizontalOptions="Center"/>
                                             <Label Text="{Binding State, Converter={StaticResource BoolConverters}}" 
                                                 Grid.Row="0" 
-                                                Font="Bold"
+                                                FontAttributes="Bold"
                                                 Grid.Column="4"
                                                 TextColor="Black"
                                                 HorizontalOptions="Center"/>

@@ -13,6 +13,7 @@ using MenuItem = Xamarin.Forms.MenuItem;
 using XAM_ProyectITM.Services;
 using Plugin.XamarinFormsSaveOpenPDFPackage;
 using LIBPresentationContext.Implementations.Helpers.PdfHelper;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace XAM_ProyectITM.Screens.Phone
 {
@@ -29,6 +30,8 @@ namespace XAM_ProyectITM.Screens.Phone
                 InitializeComponent();
 
                 ConfigColor();
+                TextChanged(null, null);
+                cbState_CheckedChanged(null, null);
 
                 var data = new Dictionary<string, object>();
                 data.Add("View", this);
@@ -47,11 +50,10 @@ namespace XAM_ProyectITM.Screens.Phone
             try
             {
                 this.lbTitle.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.DeepSkyBlue);
-                this.cpPersons.SetAppThemeColor(ContentPage.BackgroundColorProperty, Color.White, Color.DarkGray);
+                this.cpPersons.SetAppThemeColor(ContentPage.BackgroundColorProperty, Color.White, Color.Black);
                 this.fmButtons.SetAppThemeColor(Frame.BackgroundColorProperty, Color.White, Color.DarkGray);
                 this.fmDetails.SetAppThemeColor(Frame.BackgroundColorProperty, Color.White, Color.DarkGray);
                 this.aiLoading.SetAppThemeColor(ActivityIndicator.ColorProperty, Color.Black, Color.DeepSkyBlue);
-
             }
             catch (Exception ex)
             {
@@ -266,7 +268,7 @@ namespace XAM_ProyectITM.Screens.Phone
                 if (((ToolbarItem)sender).Text == "Ligth")
                     Application.Current.UserAppTheme = OSAppTheme.Light;
                 if (((ToolbarItem)sender).Text == "Dark")
-                Application.Current.UserAppTheme = OSAppTheme.Dark;
+                    Application.Current.UserAppTheme = OSAppTheme.Dark;
             }
             catch (Exception ex)
             {
@@ -288,6 +290,55 @@ namespace XAM_ProyectITM.Screens.Phone
                         case "Edit": await ((VmPersons)this.BindingContext).Update(); break;
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
+        private void TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (this.txName.Text == string.Empty || this.txName.Text == null)
+                {
+                    ((CustomEntry)this.txName).BorderColor = Color.LightGray;
+                    this.txName.BackgroundColor = Color.Pink;
+                }
+                if (this.txName.Text != string.Empty || this.txName.Text != null)
+                    ((CustomEntry)this.txName).BackgroundColor = Color.Transparent;
+
+                if (this.txSSN.Text == string.Empty || this.txSSN.Text == null)
+                    this.txSSN.BackgroundColor = Color.Pink;
+                else
+                    this.txSSN.BackgroundColor = Color.LightGray;
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
+        private void txBorn_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
+        private void cbState_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            try
+            {
+                if (this.cbState.IsChecked == false || this.cbState.IsChecked == null)
+                    this.cbState.Color = Color.Pink;
+                else
+                    this.cbState.Color = Color.DeepSkyBlue;
             }
             catch (Exception ex)
             {

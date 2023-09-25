@@ -17,4 +17,19 @@
     <ProjectReference Include="..\LIBUtilities\LIBUtilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Core\Resources\RsPersons.Designer.cs">
+      <DependentUpon>RsPersons.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Core\Resources\RsPersons.resx">
+      <LastGenOutput>RsPersons.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

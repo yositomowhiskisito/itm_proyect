@@ -1,9 +1,6 @@
-﻿using LIBPresentationContext.Core;
-using LIBPresentationCore.Core;
-using LIBUtilities.Core;
+﻿using LIBUtilities.Core;
 using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using XAM_ProyectITM.Core;
 
 namespace XAM_ProyectITM
@@ -14,7 +11,7 @@ namespace XAM_ProyectITM
         {
             InitializeComponent();
             LIBCommunicationContext.Communication.Base = "192.168.100.5";
-
+            
             MessagesHelper.IMessage = new MessageXAM();
 
             CreateCache();

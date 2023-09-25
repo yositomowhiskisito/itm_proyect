@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Android.Support.V7.App;
 using XAM_ProyectITM.Services;
 using XAM_ProyectITM.Droid.Services;
+using Xamarin.Forms.Platform.Android;
+using Xamarin.Forms;
 
 namespace XAM_ProyectITM.Droid
 {
@@ -64,5 +66,6 @@ namespace XAM_ProyectITM.Droid
                 }
             }
         }
+
     }
 }

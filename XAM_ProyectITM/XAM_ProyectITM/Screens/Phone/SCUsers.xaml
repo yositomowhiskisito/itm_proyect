@@ -313,31 +313,58 @@
                     CornerRadius="15" 
                     HasShadow="True">
                     <StackLayout>
-                        <CarouselView ItemsSource="{Binding List}"
+                        <CarouselView IsBounceEnabled="False"
+                            PeekAreaInsets="60"
+                            ItemsSource="{Binding List}"
                             CurrentItem="{Binding Current, Mode=TwoWay}">
                             <CarouselView.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="CurrentItem">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Scale"
+                                                            Value="1.1" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="PreviousItem">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Opacity"
+                                                            Value="0.5" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="NextItem">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Opacity"
+                                                            Value="0.5" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="DefaultItem">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Opacity"
+                                                            Value="0.25" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
                                         <Frame x:Name="frCarrousel"
                                             HasShadow="True"
-                                            BorderColor="White"
                                             CornerRadius="15"
                                             Margin="2"
-                                            HeightRequest="300"
-                                            WidthRequest="400"
                                             HorizontalOptions="Center"
                                             VerticalOptions="Start">
                                             <StackLayout>
+                                                <Image Source="{Binding _Person.File, Converter={StaticResource ByteArrayToImageSource}}"
+                                                    Aspect="AspectFill"
+                                                    HeightRequest="200"
+                                                    WidthRequest="200"
+                                                    HorizontalOptions="Center" />
                                                 <Label Text="{Binding _Person.Name}"
                                                     FontAttributes="Bold"
                                                     FontSize="Large"
                                                     HorizontalOptions="Center"
                                                     VerticalOptions="Center" />
-                                                <Image Source="{Binding _Person.File, Converter={StaticResource ByteArrayToImageSource}}"
-                                                    Aspect="AspectFill"
-                                                    HeightRequest="150"
-                                                    WidthRequest="150"
-                                                    HorizontalOptions="Center" />
                                                 <Label Text="{Binding Email}"
                                                     FontAttributes="Bold"
                                                     FontSize="Large"
@@ -354,11 +381,6 @@
                                 </DataTemplate>
                             </CarouselView.ItemTemplate>
                         </CarouselView>
-
-                        <IndicatorView x:Name="indicatorView"
-                           IndicatorColor="LightGray"
-                           SelectedIndicatorColor="DarkGray"
-                           HorizontalOptions="Center" />
                     </StackLayout>
 
                 </Frame>

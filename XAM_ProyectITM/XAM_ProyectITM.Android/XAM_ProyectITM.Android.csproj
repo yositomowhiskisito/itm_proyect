@@ -79,6 +79,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\CustomEntryRenderer.cs" />
     <Compile Include="Core\FilePickerImplementation.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
