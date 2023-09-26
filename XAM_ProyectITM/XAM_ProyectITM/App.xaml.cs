@@ -19,8 +19,12 @@ namespace XAM_ProyectITM
             GlobalData.Application = this;
             MessagesHelper.SetIntance(new MessageXAM());
 
-            if (Device.Idiom == TargetIdiom.Tablet)
+            /*if (Device.Idiom == TargetIdiom.Tablet)
                 GlobalData.RightMenu = false;
+            if (GlobalData.RightMenu)
+                MainPage = new Screens.Phone.MainWindow();*/
+
+            GlobalData.RightMenu = true;
             if (GlobalData.RightMenu)
                 MainPage = new Screens.Phone.MainWindow();
         }

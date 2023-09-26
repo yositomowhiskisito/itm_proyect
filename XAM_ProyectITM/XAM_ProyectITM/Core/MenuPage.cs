@@ -17,10 +17,22 @@ namespace XAM_ProyectITM.Core
             BackgroundColor = Color.White;
 
             Menu = new MenuListView();
+
+            var stacklayout = new StackLayout();
+            stacklayout.Children.Add(new Image
+            {
+                Source = ImageSource.FromResource("XAM_ProyectITM.Images.ITM.png"),
+                WidthRequest = 35,
+                VerticalOptions = LayoutOptions.Center,
+                Margin = new Thickness(10, 0)
+            });
+
+            stacklayout.Children.Add(new Label { TextColor = Color.Black, Text = "MENU" });
+
             var menuLabel = new ContentView
             {
                 Padding = new Thickness(10, 36, 0, 5),
-                Content = new Label { TextColor = Color.Black, Text = "MENU" },
+                Content = stacklayout,
             };
 
             /*((StackLayout)menuLabel.Content).Children.Add(new Image
@@ -29,8 +41,8 @@ namespace XAM_ProyectITM.Core
                 WidthRequest = 35,
                 VerticalOptions = LayoutOptions.Center,
                 Margin = new Thickness(10, 0)
-            });*/
-            /*((StackLayout)menuLabel.Content).Children.Add(new Label
+            });
+            ((StackLayout)menuLabel.Content).Children.Add(new Label
             {
                 TextColor = Color.White,
                 VerticalOptions = LayoutOptions.Center,
@@ -62,7 +74,7 @@ namespace XAM_ProyectITM.Core
 
             var cell = new DataTemplate(typeof(MenuCell));
             cell.SetBinding(MenuCell.TextProperty, "Title");
-            cell.SetBinding(MenuCell.ImageSourceProperty, "IconSource");
+            cell.SetBinding(MenuCell.ImageSourceProperty, "XAM_ProyectITM.Images.ITM.png");
 
             ItemTemplate = cell;
         }
@@ -72,8 +84,8 @@ namespace XAM_ProyectITM.Core
             var list = new List<MenuItem>();
 
             list.Add(new MenuItem() { Title = "Home", TargetType = typeof(TabbedPage1) });
-            list.Add(new MenuItem() { Title = "Persons", TargetType = typeof(SCPersons) });
-            list.Add(new MenuItem() { Title = "Users", TargetType = typeof(SCUsers) });
+            list.Add(new MenuItem() { Title = "Persons", TargetType = typeof(SCPersons)});
+            list.Add(new MenuItem() { Title = "Users", TargetType = typeof(SCUsers)  });
             return list;
         }
     }

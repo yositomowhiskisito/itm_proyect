@@ -314,7 +314,7 @@
                     HasShadow="True">
                     <StackLayout>
                         <CarouselView IsBounceEnabled="False"
-                            PeekAreaInsets="60"
+                            PeekAreaInsets="50"
                             ItemsSource="{Binding List}"
                             CurrentItem="{Binding Current, Mode=TwoWay}">
                             <CarouselView.ItemTemplate>
@@ -323,21 +323,21 @@
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup x:Name="CommonStates">
                                                 <VisualState x:Name="CurrentItem">
-                                                    <VisualState.Setters>
-                                                        <Setter Property="Scale"
-                                                            Value="1.1" />
-                                                    </VisualState.Setters>
                                                 </VisualState>
                                                 <VisualState x:Name="PreviousItem">
                                                     <VisualState.Setters>
                                                         <Setter Property="Opacity"
                                                             Value="0.5" />
+                                                        <Setter Property="InputTransparent"
+                                                            Value="True" />
                                                     </VisualState.Setters>
                                                 </VisualState>
                                                 <VisualState x:Name="NextItem">
                                                     <VisualState.Setters>
                                                         <Setter Property="Opacity"
                                                             Value="0.5" />
+                                                        <Setter Property="InputTransparent"
+                                                            Value="True" />
                                                     </VisualState.Setters>
                                                 </VisualState>
                                                 <VisualState x:Name="DefaultItem">
@@ -355,6 +355,7 @@
                                             HorizontalOptions="Center"
                                             VerticalOptions="Start">
                                             <StackLayout>
+                                                
                                                 <Image Source="{Binding _Person.File, Converter={StaticResource ByteArrayToImageSource}}"
                                                     Aspect="AspectFill"
                                                     HeightRequest="200"

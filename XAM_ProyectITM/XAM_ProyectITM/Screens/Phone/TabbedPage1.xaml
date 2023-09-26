@@ -33,8 +33,8 @@
                 <ScrollView Orientation="Vertical">
                     <StackLayout >
                         <Image Margin="5"
-                            HeightRequest="300"
-                            WidthRequest="200"
+                            HeightRequest="200"
+                            WidthRequest="100"
                             Source="People.jpg" 
                             IsAnimationPlaying="False">
                         </Image>
@@ -81,10 +81,10 @@
                 <ScrollView Orientation="Vertical" >
                     <StackLayout>
                         <Image
-                            HeightRequest="300"
+                            HeightRequest="180"
                             WidthRequest="100"
                             Source="Users.gif"
-                            IsAnimationPlaying="False"/>
+                            IsAnimationPlaying="True"/>
                     </StackLayout>
                 </ScrollView>
             </Frame>
@@ -120,10 +120,10 @@
             Padding="5">
             <StackLayout Margin="5">
                 <Image 
-                    HeightRequest="300"
+                    HeightRequest="200"
                     WidthRequest="100"
                     Source="Reports.gif"
-                    IsAnimationPlaying="False"/>
+                    IsAnimationPlaying="True"/>
             </StackLayout>
         </Frame>
     </ContentPage>

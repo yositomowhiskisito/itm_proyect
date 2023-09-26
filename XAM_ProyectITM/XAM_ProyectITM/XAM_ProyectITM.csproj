@@ -32,7 +32,6 @@
     <None Remove="Images\Reports.gif" />
     <None Remove="Images\save.png" />
     <None Remove="Images\select.jpg" />
-    <None Remove="Images\splash_logo.png" />
     <None Remove="Images\types.png" />
     <None Remove="Images\upload.png" />
     <None Remove="Images\Users.gif" />
@@ -60,7 +59,6 @@
     <EmbeddedResource Include="Images\Reports.gif" />
     <EmbeddedResource Include="Images\save.png" />
     <EmbeddedResource Include="Images\select.jpg" />
-    <EmbeddedResource Include="Images\splash_logo.png" />
     <EmbeddedResource Include="Images\types.png" />
     <EmbeddedResource Include="Images\upload.png" />
     <EmbeddedResource Include="Images\Users.gif" />
