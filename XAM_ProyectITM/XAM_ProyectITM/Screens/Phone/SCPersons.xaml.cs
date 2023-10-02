@@ -13,7 +13,6 @@ using MenuItem = Xamarin.Forms.MenuItem;
 using XAM_ProyectITM.Services;
 using Plugin.XamarinFormsSaveOpenPDFPackage;
 using LIBPresentationContext.Implementations.Helpers.PdfHelper;
-using Xamarin.CommunityToolkit.Extensions;
 
 namespace XAM_ProyectITM.Screens.Phone
 {
@@ -301,7 +300,7 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
-                if (this.txName.Text == string.Empty || this.txName.Text == null)
+                if (((CustomEntry)this.txName).Text == string.Empty || ((CustomEntry)this.txName).Text == null)
                 {
                     ((CustomEntry)this.txName).BorderColor = Color.LightGray;
                     this.txName.BackgroundColor = Color.Pink;
@@ -335,7 +334,7 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
-                if (this.cbState.IsChecked == false || this.cbState.IsChecked == null)
+                if (this.cbState.IsChecked == false)
                     this.cbState.Color = Color.Pink;
                 else
                     this.cbState.Color = Color.DeepSkyBlue;

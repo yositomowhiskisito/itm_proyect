@@ -4,7 +4,18 @@
     x:Class="XAM_ProyectITM.Screens.Phone.TabbedPage1"
     BarBackgroundColor="White" 
     BarTextColor="Black" 
-    SelectedTabColor="DeepSkyBlue">
+    SelectedTabColor="DeepSkyBlue"
+    UnselectedTabColor="Pink">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="Dark" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
+            Priority="0"/>
+        <ToolbarItem Text="Ligth" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
+            Priority="0"/>
+    </TabbedPage.ToolbarItems>
     <!--Pages can be added as references or inline-->
     <ContentPage x:Name="cntPersons"
         Title="Persons"
@@ -32,12 +43,12 @@
                 Padding="5">
                 <ScrollView Orientation="Vertical">
                     <StackLayout >
-                        <Image Margin="5"
+                        <!--<Image Margin="5"
                             HeightRequest="200"
                             WidthRequest="100"
                             Source="People.jpg" 
                             IsAnimationPlaying="False">
-                        </Image>
+                        </Image>-->
                     </StackLayout>
                 </ScrollView>
             </Frame>
@@ -80,11 +91,11 @@
                 Padding="5">
                 <ScrollView Orientation="Vertical" >
                     <StackLayout>
-                        <Image
+                        <!--<Image
                             HeightRequest="180"
                             WidthRequest="100"
                             Source="Users.gif"
-                            IsAnimationPlaying="True"/>
+                            IsAnimationPlaying="False"/>-->
                     </StackLayout>
                 </ScrollView>
             </Frame>
@@ -119,11 +130,11 @@
             HasShadow="True"
             Padding="5">
             <StackLayout Margin="5">
-                <Image 
+                <!--<Image 
                     HeightRequest="200"
                     WidthRequest="100"
                     Source="Reports.gif"
-                    IsAnimationPlaying="True"/>
+                    IsAnimationPlaying="False"/> -->
             </StackLayout>
         </Frame>
     </ContentPage>

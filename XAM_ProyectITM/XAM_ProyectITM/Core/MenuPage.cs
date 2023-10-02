@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using XAM_ProyectITM.Screens.Phone;
 using Xamarin.Forms;
-//using XAM_Proyect.Screens.Phone;
 
 namespace XAM_ProyectITM.Core
 {
     public class MenuPage : ContentPage
     {
         public ListView Menu { get; set; }
+        public static StackLayout stacklayout = new StackLayout();
 
         public MenuPage()
         {
@@ -18,16 +18,18 @@ namespace XAM_ProyectITM.Core
 
             Menu = new MenuListView();
 
-            var stacklayout = new StackLayout();
+            stacklayout = new StackLayout();
+            
             stacklayout.Children.Add(new Image
-            {
-                Source = ImageSource.FromResource("XAM_ProyectITM.Images.ITM.png"),
-                WidthRequest = 35,
-                VerticalOptions = LayoutOptions.Center,
-                Margin = new Thickness(10, 0)
-            });
+                {
+                    Source = ImageSource.FromResource("XAM_ProyectITM.Images.ITM.png"),
+                    WidthRequest = 35,
+                    VerticalOptions = LayoutOptions.Center,
+                    Margin = new Thickness(10, 0)
+                });
+            
 
-            stacklayout.Children.Add(new Label { TextColor = Color.Black, Text = "MENU" });
+            //stacklayout.Children.Add(new Label { TextColor = Color.Black, Text = "MENU" });
 
             var menuLabel = new ContentView
             {

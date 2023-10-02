@@ -1,6 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using XAM_ProyectITM.Core;
+using System.Runtime.CompilerServices;
+using LIBUtilities.Core;
+using Xamarin.CommunityToolkit.UI.Views;
 
 namespace XAM_ProyectITM.Screens.Phone
 {
@@ -49,6 +52,23 @@ namespace XAM_ProyectITM.Screens.Phone
 
         public static void ActionForm(bool value)
         {
+            ImageSource img = null;
+            if (CacheHelper.ContainsKey("Photo"))
+            {
+                img = (ImageSource)CacheHelper.GetValue("Photo");
+                MenuPage.stacklayout.Children.Add(new Image
+                {
+                    Source = img,
+                    WidthRequest = 200,
+                    HeightRequest = 200,
+                    VerticalOptions = LayoutOptions.Center,
+                    Margin = new Thickness(10, 0)
+                });
+            }
+
+            MenuPage.stacklayout.Children.Add(new Label { TextColor = Color.Black, Text = (string)CacheHelper.GetValue("Name"), HorizontalTextAlignment = TextAlignment.Center });
+            MenuPage.stacklayout.Children.Add(new Label { TextColor = Color.Black, Text = "MENU" });
+
             Page displayPage = new TabbedPage1();
             displayPage.Title = "ITM Proyect";
             GlobalData.MasterDetailPage.IsGestureEnabled = true;

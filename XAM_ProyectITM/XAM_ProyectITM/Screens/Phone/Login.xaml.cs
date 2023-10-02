@@ -1,12 +1,16 @@
-﻿using LIBPresentationContext.Implementations.VwModels;
+﻿using LIBDomainEntities.Entities;
+using LIBPresentationContext.Implementations.VwModels;
 using LIBPresentationCore.Core;
 using LIBUtilities.Core;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XAM_ProyectITM.Core;
 using XAM_ProyectITM.Services;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -77,17 +81,37 @@ namespace XAM_ProyectITM.Screens.Phone
             try
             {
                 this.frEnt.BackgroundColor = Color.DeepSkyBlue;
+                this.frEnt.HasShadow = false;
                 var data = new Dictionary<string, object>();
                 data["Email"] = this.txUser.Text;
                 data["Password"] = this.txPassword.Text;
+
                 var response = await VwModel.Login(data);
+
+                this.frEnt.HasShadow = true;
+                this.frEnt.BackgroundColor = Color.White;
+
                 if (response.ContainsKey("Error"))
                 {
-                    //LogsHelper.Show(response["Error"].ToString());
+                    btClean_Click(null, null);
+                    this.frEnt.HasShadow = true;
+                    this.frEnt.BackgroundColor = Color.White;
                     return;
                 }
 
-                this.frEnt.BackgroundColor = Color.White;
+                ImageSource imgsrc = null;
+                byte[] bArray = ((Users)response["User"])._Person.File;
+
+                imgsrc = ImageSource.FromStream(() =>
+                {
+                    var ms = new MemoryStream(bArray);
+                    ms.Position = 0;
+                    return ms;
+                });
+
+                string user  = ((Users)response["User"])._Person.Name;
+                CacheHelper.Add("Name", user);
+                CacheHelper.Add("Photo", imgsrc);
                 MainWindow.ActionForm(true);
             }
             catch (Exception ex)

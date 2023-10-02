@@ -27,7 +27,7 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
-                await Navigation.PushAsync(new SCPersons());
+                //await Navigation.PushAsync(new SCPersons());
             }
             catch (Exception ex)
             {
@@ -39,7 +39,22 @@ namespace XAM_ProyectITM.Screens.Phone
         {
             try
             {
-                await Navigation.PushAsync(new SCUsers());
+                //await Navigation.PushAsync(new SCUsers());
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (((ToolbarItem)sender).Text == "Ligth")
+                    Application.Current.UserAppTheme = OSAppTheme.Light;
+                if (((ToolbarItem)sender).Text == "Dark")
+                    Application.Current.UserAppTheme = OSAppTheme.Dark;
             }
             catch (Exception ex)
             {
