@@ -145,6 +145,7 @@ namespace XAM_ProyectITM.Screens.Phone
             try
             {
                 await Navigation.PushAsync(new SCNPersons());
+                //await Navigation.PushModalAsync(new SCNPersons()); --Abre en modo modal
             }
             catch (Exception ex)
             {

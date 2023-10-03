@@ -4,12 +4,6 @@
     x:Class="XAM_ProyectITM.Screens.Phone.SCNUsers"
     Title="Create Users">
     <ContentPage.ToolbarItems>
-        <ToolbarItem 
-            Clicked="ToolbarItem_Clicked"
-            IconImageSource="config.png"
-            Order="Primary"
-            Priority="0">
-        </ToolbarItem>
         <ToolbarItem Text="About" 
             Clicked="ToolbarItem_Clicked"
             Order="Secondary"
