@@ -146,10 +146,9 @@ namespace XAM_ProyectITM.Screens.Phone
             {
                 await Navigation.PushAsync(new SCNPersons());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogsHelper.Logs(ex);
             }
         }
     }

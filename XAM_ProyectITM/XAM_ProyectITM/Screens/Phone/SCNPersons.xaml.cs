@@ -1,6 +1,7 @@
 ﻿using LIBDomainEntities.Entities;
 using LIBPresentationContext.Implementations.VwModels;
 using LIBPresentationCore.Core;
+using LIBUtilities.Core;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -57,6 +58,18 @@ namespace XAM_ProyectITM.Screens.Phone
         private void txBorn_DateSelected(object sender, DateChangedEventArgs e)
         {
 
+        }
+
+        private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            try
+            {
+                await Navigation.PushAsync(new SCNUsers());
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
+            }
         }
     }
 }

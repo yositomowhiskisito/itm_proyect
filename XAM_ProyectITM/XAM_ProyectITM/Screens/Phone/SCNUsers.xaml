@@ -1,23 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:c="clr-namespace:XAM_ProyectITM.Core;assembly=XAM_ProyectITM" 
-    xmlns:rs="clr-namespace:LIBPresentationContext.Core.Resources;assembly=LIBPresentationContext"
-    x:Class="XAM_ProyectITM.Screens.Phone.SCNPersons"
-    Title="Create Persons">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <c:BoolConverters x:Key="BoolConverters"/>
-            <c:AgeConverters x:Key="AgeConverters"/>
-            <c:ByteArrayToImageSource x:Key="ByteArrayToImageSource"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <ContentPage.ToolbarItems >
-        <ToolbarItem Text="Dark" 
+    x:Class="XAM_ProyectITM.Screens.Phone.SCNUsers"
+    Title="Create Users">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Clicked="ToolbarItem_Clicked"
+            IconImageSource="config.png"
+            Order="Primary"
+            Priority="0">
+        </ToolbarItem>
+        <ToolbarItem Text="About" 
             Clicked="ToolbarItem_Clicked"
             Order="Secondary"
             Priority="0"/>
-        <ToolbarItem Text="Ligth" 
+        <ToolbarItem Text="Contact" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
+            Priority="0"/>
+        <ToolbarItem Text="Help" 
+            Clicked="ToolbarItem_Clicked"
+            Order="Secondary"
+            Priority="0"/>
+
+        <ToolbarItem Text="Style" 
             Clicked="ToolbarItem_Clicked"
             Order="Secondary"
             Priority="0"/>
@@ -27,36 +33,36 @@
             <Grid Padding="10, 10, 10, 10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="2"/>
                     <RowDefinition Height="0"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="0"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0" x:Name="clDetail"/>
-                    <ColumnDefinition Width="*" x:Name ="clList"/>
+                    <ColumnDefinition Width="*" x:Name="clDetail"/>
                 </Grid.ColumnDefinitions>
 
-                <Label x:Name="lbTitle" 
+                <Label x:Name="lbUserAccounts"
                     Grid.Row="0" 
-                    Grid.Column="1" 
-                    FontAttributes="Bold" 
+                    Grid.Column="0" 
+                    Font="Bold" 
                     HorizontalOptions="Start"
                     FontSize="20" 
-                    Text="{x:Static rs:RsPersons.lbTitle}"/>
+                    Text="Users Account"
+                    TextColor="{StaticResource colorMain5}"/>
 
-                <Frame x:Name="fmDetails"
+                <Frame x:Name="frDetails"
                     Grid.Row="3" 
                     Grid.Column="0" 
                     Grid.RowSpan="2"
-                    HasShadow="True"
                     CornerRadius="15" 
-                    Grid.ColumnSpan="2">
+                    HasShadow="True">
 
-                    <Grid>
+                    <Grid Margin="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45"/>
                             <RowDefinition Height="*"/>
@@ -68,21 +74,19 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-
                         <Label Grid.Row="0" 
-                            Grid.Column="0"
-                            HorizontalOptions="Start" 
-                            VerticalOptions="Center"
+                            Grid.Column="0" 
                             Grid.ColumnSpan="2"
-                            FontSize="15" Text="{x:Static rs:RsPersons.lbTitleSingle}"
-                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start" 
+                            FontSize="15" Text="User"
                             TextColor="Black"/>
 
-                        <Frame x:Name="fmDetailP"
+                        <Frame x:Name="frDetailsUser"
                             Grid.Row="1"
-                            CornerRadius="15" 
+                            Grid.Column="0" 
                             HasShadow="True"
-                            Grid.Column="0"
+                            CornerRadius="15"
                             Grid.ColumnSpan="2">
 
                             <Grid Margin="5" 
@@ -92,10 +96,10 @@
                                     <RowDefinition Height="45"/>
                                     <RowDefinition Height="45"/>
                                     <RowDefinition Height="45"/>
-                                    <RowDefinition Height="45"/>
-                                    <RowDefinition Height="45"/>
-                                    <RowDefinition Height="45"/>
-                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="0"/>
+                                    <RowDefinition Height="0"/>
                                     <RowDefinition Height="4"/>
                                     <RowDefinition Height="50"/>
                                 </Grid.RowDefinitions>
@@ -107,80 +111,87 @@
                                     <ColumnDefinition Width="40"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Row="1" 
+
+                                <Label x:Name="lbEmail"
+                                    Grid.Row="1" 
                                     Grid.Column="0" 
                                     HorizontalOptions="End"
                                     VerticalOptions="Center"
                                     FontSize="15" 
-                                    Text="{x:Static rs:RsPersons.lbSSN}"
+                                    Text="Email: "
                                     TextColor="Black"/>
-                                <Entry Margin="2"
-                                    Grid.Row="1" 
-                                    Grid.Column="1"  
-                                    x:Name="txSSN" 
-                                    Keyboard="Numeric"
-                                    TextColor="Black"
-                                    Grid.ColumnSpan="3"
-                                    TextChanged="TextChanged"
-                                    BackgroundColor="LightGray"
-                                    Text="{Binding Current.SSN, Mode=TwoWay}"/>
-
-                                <Label Grid.Row="2" 
-                                    Grid.Column="0" 
-                                    FontSize="15" 
-                                    Text="{x:Static rs:RsPersons.lbName}"
-                                    TextColor="Black"
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Center"/>
-                                <c:CustomEntry Grid.Row="2" 
+                                <Entry Grid.Row="1" 
                                     Grid.Column="1" 
+                                    Grid.ColumnSpan="3" Margin="2"
+                                    x:Name="txSSN" 
+                                    Text="{Binding Current.Email, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    BackgroundColor="LightGray"/>
+
+                                <Label x:Name="lbPerson"
+                                    Grid.Row="2" 
+                                    Grid.Column="0" 
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    FontSize="15" 
+                                    Text="Person: "
+                                    TextColor="Black"/>
+                                <Entry Grid.Row="2" 
+                                    Grid.Column="1" 
+                                    Grid.ColumnSpan="3" 
                                     Margin="2"
-                                    x:Name="txName"  
+                                    x:Name="txName" 
+                                    IsEnabled="False"
+                                    Text="{Binding Current._Person.Name, Mode=TwoWay}" 
                                     Keyboard="Default"
                                     TextColor="Black"
-                                    Grid.ColumnSpan="3"
-                                    CornerRadius="15"
-                                    BorderColor="DimGray"
-                                    Placeholder="Name Person"
-                                    TextChanged="TextChanged"
-                                    IsCurvedCornersEnabled="True"
-                                    Text="{Binding Current.Name, Mode=TwoWay}" />
+                                    BackgroundColor="LightGray"/>
+                                <Image Grid.Column="4" 
+                                    Grid.Row="2" 
+                                    Source="types.png" 
+                                    HorizontalOptions="FillAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
 
-                                <Label Grid.Row="3" 
+                                <Label x:Name="lbPassword"
+                                    Grid.Row="3" 
                                     Grid.Column="0" 
-                                    FontSize="15" 
-                                    Text="{x:Static rs:RsPersons.lbBorn}"
-                                    TextColor="Black"
                                     HorizontalOptions="End"
-                                    VerticalOptions="Center"/>
-                                <DatePicker Grid.Row="3" 
+                                    VerticalOptions="Center"
+                                    FontSize="15" 
+                                    Text="Password: "
+                                    TextColor="Black"/>
+                                <Entry Grid.Row="3" 
                                     Grid.Column="1" 
-                                    Margin="2"
-                                    x:Name="txBorn"  
-                                    TextColor="Black"
                                     Grid.ColumnSpan="3" 
-                                    DateSelected="txBorn_DateSelected"
-                                    BackgroundColor="LightGray"
-                                    Date="{Binding Current.Born, Mode=TwoWay}"/>
-
-                                <Label Grid.Row="4" 
-                                    Grid.Column="0"
-                                    FontSize="15" 
-                                    Text="{x:Static rs:RsPersons.lbState}"
+                                    Margin="2"
+                                    x:Name="txPass" 
+                                    IsPassword="True"
+                                    Text="{Binding Current.Password, Mode=TwoWay}" 
+                                    Keyboard="Default"
                                     TextColor="Black"
+                                    BackgroundColor="LightGray"/>
+
+                                <Label x:Name="lbState"
+                                    Grid.Row="4" 
+                                    Grid.Column="0"
                                     HorizontalOptions="End"
-                                    VerticalOptions="Center"/>
-                                <CheckBox Grid.Row="4"  
+                                    VerticalOptions="Center"
+                                    FontSize="15" Text="State: "
+                                    TextColor="Black"/>
+                                <CheckBox x:Name="cbState"
+                                    Grid.Row="4"  
                                     Grid.Column="1"
                                     Margin="5"
-                                    x:Name="cbState"
                                     Color="DeepSkyBlue"
-                                    CheckedChanged="cbState_CheckedChanged"
                                     IsChecked="{Binding Current.State, Mode=TwoWay}"/>
                             </Grid>
-                        </Frame>
 
-                        <Frame Grid.Row="2" 
+                        </Frame>
+                        <Frame x:Name="frDetailsButtons"
+                            Grid.Row="2" 
                             Grid.Column="0" 
                             Margin="2"
                             Grid.ColumnSpan="2"
@@ -189,7 +200,6 @@
 
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
@@ -201,32 +211,21 @@
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                                     </Image.GestureRecognizers>
                                 </Image>
-                                <Image x:Name="imgup2"
-                                    Grid.Column="1" 
-                                    Source="upload.png" 
-                                    HorizontalOptions="FillAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped= "TapGestureRecognizer_Tapped"
-                                    NumberOfTapsRequired="1"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
                             </Grid>
 
                         </Frame>
                     </Grid>
                 </Frame>
 
-                <ActivityIndicator
-                    Grid.Row="5" 
+                <ActivityIndicator Grid.Row="6" 
                     Grid.Column="0" 
                     Scale="1.5"
                     Margin="5"
+                    Color="DeepSkyBlue" 
                     x:Name="aiLoading"
-                    Grid.ColumnSpan="2"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"/>
             </Grid>
-
         </ScrollView>
 
     </ContentPage.Content>
