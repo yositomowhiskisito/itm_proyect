@@ -139,5 +139,18 @@ namespace XAM_ProyectITM.Screens.Phone
                 LogsHelper.Logs(ex);
             }
         }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await Navigation.PushAsync(new SCNPersons());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

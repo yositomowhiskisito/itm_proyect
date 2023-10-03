@@ -35,20 +35,45 @@
                 x:Name="aiLoading"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
+            
             <Frame Grid.Row="0"
                 CornerRadius="15" 
                 Margin="10"
                 BackgroundColor="White" 
                 HasShadow="True"
                 Padding="5">
-                <ScrollView Orientation="Vertical">
-                    <StackLayout >
-                        <!--<Image Margin="5"
-                            HeightRequest="200"
-                            WidthRequest="100"
-                            Source="People.jpg" 
-                            IsAnimationPlaying="False">
-                        </Image>-->
+                <ScrollView Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Margin="5"
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            Source="Boy2.png" />
+
+                        <Image Margin="5"
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            Source="boy.png" />
+
+                        <Image Margin="5"
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            Source="girl.png" />
+
+                        <Image Margin="5"
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            Source="mohawk.png" />
+
+                        <Image Margin="5"
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            Source="curly.png" />
+
+                        <Image Margin="5"
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            Source="afro.png" />
+
                     </StackLayout>
                 </ScrollView>
             </Frame>
@@ -89,13 +114,38 @@
                 BackgroundColor="White" 
                 HasShadow="True"
                 Padding="5">
-                <ScrollView Orientation="Vertical" >
-                    <StackLayout>
-                        <!--<Image
-                            HeightRequest="180"
-                            WidthRequest="100"
-                            Source="Users.gif"
-                            IsAnimationPlaying="False"/>-->
+                <ScrollView Orientation="Vertical">
+                    <StackLayout Orientation="Vertical">
+                        <Image Margin="5"
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            Source="WUser.png" />
+
+                        <Image Margin="5"
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            Source="MUser.png" />
+                        
+                        <Image Margin="5"
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            Source="WUser.png" />
+                        
+                        <Image Margin="5"
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            Source="MUser.png" />
+
+                        <Image Margin="5"
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            Source="WUser.png" />
+
+                        <Image Margin="5"
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            Source="MUser.png" />
+
                     </StackLayout>
                 </ScrollView>
             </Frame>
@@ -130,11 +180,10 @@
             HasShadow="True"
             Padding="5">
             <StackLayout Margin="5">
-                <!--<Image 
+                <Image 
                     HeightRequest="200"
-                    WidthRequest="100"
-                    Source="Reports.gif"
-                    IsAnimationPlaying="False"/> -->
+                    WidthRequest="200"
+                    Source="Chart.png"/>
             </StackLayout>
         </Frame>
     </ContentPage>

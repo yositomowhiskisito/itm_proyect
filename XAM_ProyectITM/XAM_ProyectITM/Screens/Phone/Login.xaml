@@ -20,6 +20,7 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="85"/>
+                        <RowDefinition Height="50"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -53,9 +54,9 @@
 
                     <Label Grid.Row="3"
                         Grid.Column="0" 
-                        HorizontalOptions="Center"
+                        HorizontalOptions="End"
                         TextColor="Black"
-                        Text="Email" 
+                        Text="Email: " 
                         VerticalOptions="CenterAndExpand"/>
                     <Entry Grid.Row="3" 
                         Grid.Column="1" 
@@ -70,9 +71,9 @@
 
                     <Label Grid.Row="4" 
                         Grid.Column="0"
-                        HorizontalOptions="Center" 
+                        HorizontalOptions="End" 
                         VerticalOptions="CenterAndExpand"
-                        Text="Password"
+                        Text="Password: "
                         TextColor="Black"/>
                     <Entry Grid.Row="4" 
                         Grid.Column="1" 
@@ -117,6 +118,14 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </Frame>
+                    <Button Grid.Row="6"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Don't have a user? Create your user"
+                        Clicked="Button_Clicked"
+                        TextColor="DeepSkyBlue"
+                        BackgroundColor="Transparent">
+                    </Button>
                 </Grid>
             </Frame>
         </ScrollView>
