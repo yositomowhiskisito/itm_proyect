@@ -20,7 +20,9 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="85"/>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="10"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -118,14 +120,35 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </Frame>
-                    <Button Grid.Row="6"
+
+                    <Frame Grid.Row="6"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
+                        x:Name="frcU"
+                        CornerRadius="15" 
+                        HasShadow="True">
+
+                        <Button 
                         Text="Don't have a user? Create your user"
                         Clicked="Button_Clicked"
                         TextColor="DeepSkyBlue"
                         BackgroundColor="Transparent">
-                    </Button>
+                        </Button>
+                    </Frame>
+
+                    <Frame Grid.Row="7"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        CornerRadius="15" 
+                        HasShadow="True">
+                        <Button 
+                            Text="Forgot your password? Recover it here"
+                            Clicked="Button_Clicked_1"
+                            IsEnabled="False"
+                            TextColor="Red"
+                            BackgroundColor="Transparent">
+                        </Button>
+                    </Frame>
                 </Grid>
             </Frame>
         </ScrollView>

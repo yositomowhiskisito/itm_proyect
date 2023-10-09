@@ -12,6 +12,9 @@ using iText.Layout;
 using System.IO;
 using LIBDomainEntities.Entities;
 using System.Collections.ObjectModel;
+using System.Runtime.InteropServices.ComTypes;
+using iText.Kernel.Pdf.Xobject;
+using iText.Layout.Borders;
 
 namespace LIBPresentationContext.Implementations.Helpers.PdfHelper
 {
@@ -195,27 +198,27 @@ namespace LIBPresentationContext.Implementations.Helpers.PdfHelper
             // Table
             Table table = new Table(6, false);
             iText.Layout.Element.Cell cell11 = new iText.Layout.Element.Cell(1, 1)
-               .SetBackgroundColor(ColorConstants.LIGHT_GRAY)
+               .SetBackgroundColor(ColorConstants.WHITE)
                .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
                .Add(new Paragraph("Id"));
             iText.Layout.Element.Cell cell12 = new iText.Layout.Element.Cell(1, 1)
-               .SetBackgroundColor(ColorConstants.LIGHT_GRAY)
+               .SetBackgroundColor(ColorConstants.WHITE)
                .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
                .Add(new Paragraph("SSN"));
             iText.Layout.Element.Cell cell13 = new iText.Layout.Element.Cell(1, 1)
-               .SetBackgroundColor(ColorConstants.LIGHT_GRAY)
+               .SetBackgroundColor(ColorConstants.WHITE)
                .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
                .Add(new Paragraph("Name"));
             iText.Layout.Element.Cell cell14 = new iText.Layout.Element.Cell(1, 1)
-               .SetBackgroundColor(ColorConstants.LIGHT_GRAY)
+               .SetBackgroundColor(ColorConstants.WHITE)
                .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
                .Add(new Paragraph("Born"));
             iText.Layout.Element.Cell cell15 = new iText.Layout.Element.Cell(1, 1)
-               .SetBackgroundColor(ColorConstants.LIGHT_GRAY)
+               .SetBackgroundColor(ColorConstants.WHITE)
                .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
                .Add(new Paragraph("State"));
             iText.Layout.Element.Cell cell16 = new iText.Layout.Element.Cell(1, 1)
-               .SetBackgroundColor(ColorConstants.LIGHT_GRAY)
+               .SetBackgroundColor(ColorConstants.WHITE)
                .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
                .Add(new Paragraph("File"));
 
@@ -228,6 +231,8 @@ namespace LIBPresentationContext.Implementations.Helpers.PdfHelper
 
             foreach (var item in list)
             {
+                ImageData rawImage = ImageDataFactory.Create(item.File);
+                Image image = new Image(rawImage);
                 iText.Layout.Element.Cell cell21 = new iText.Layout.Element.Cell(1, 1)
                    .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
                    .Add(new Paragraph(item.Id.ToString()));
@@ -243,16 +248,16 @@ namespace LIBPresentationContext.Implementations.Helpers.PdfHelper
                 iText.Layout.Element.Cell cell25 = new iText.Layout.Element.Cell(1, 1)
                    .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
                    .Add(new Paragraph(item.State.ToString()));
-                iText.Layout.Element.Cell cell26 = new iText.Layout.Element.Cell(1, 1)
-                   .SetTextAlignment(iText.Layout.Properties.TextAlignment.CENTER)
-                   .Add(new Paragraph("item.File.ToString()"));
+                Cell cell = new Cell().Add(image.SetAutoScale(true));
+                cell.SetHeight(20); cell.SetWidth(20);
 
+                //table.AddCell(cell21.SetBorder(Border.NO_BORDER));
                 table.AddCell(cell21);
                 table.AddCell(cell22);
                 table.AddCell(cell23);
                 table.AddCell(cell24);
                 table.AddCell(cell25);
-                table.AddCell(cell26);
+                table.AddCell(cell);
             }
 
             document.Add(newline);

@@ -5,14 +5,13 @@ using LIBUtilities.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using XAM_ProyectITM.Core;
-using XAM_ProyectITM.Services;
-using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 namespace XAM_ProyectITM.Screens.Phone
 {
@@ -150,6 +149,35 @@ namespace XAM_ProyectITM.Screens.Phone
             catch (Exception ex)
             {
                 LogsHelper.Logs(ex);
+            }
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
+
+                mail.From = new MailAddress("alejandro_albanes85@hotmail.com");
+                mail.To.Add("alejandro_albanes85@hotmail.com");
+                mail.Subject = "Subject Test";
+                mail.Body = "Body test";
+
+                SmtpServer.Port = 587;
+                SmtpServer.Host = "smtp.live.com";
+                SmtpServer.EnableSsl = false;
+                SmtpServer.UseDefaultCredentials = false;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("alejandro_albanes85@hotmail.com", "abc123-!!");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+
+                DisplayAlert("Send","Email was send", "OK");
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Faild", ex.Message, "OK");
             }
         }
     }
