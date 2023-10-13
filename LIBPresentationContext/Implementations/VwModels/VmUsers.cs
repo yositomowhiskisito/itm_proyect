@@ -78,6 +78,59 @@ namespace LIBPresentationContext.Implementations.VwModels
             }
         }
 
+
+        public async Task<Dictionary<string, object>> Save()
+        {
+            var response = new Dictionary<string, object>();
+            try
+            {
+                IUserControl.MoveFocus(Focus.DOWN);
+                await IUserControl.Loading(Loading.ADD);
+                var data = new Dictionary<string, object>();
+                if (!FillEntity())
+                    return response;
+                data.Add("Current", Current);
+                if (Action == Action.NEW)
+                {
+                    response = await IHelper.SaveEntity(data);
+
+                    if (response == null ||
+                        response.ContainsKey("Error") ||
+                        !response.ContainsKey("Response"))
+                        return response;
+
+                    Current = (Users)response["Current"];
+                    List.Add(Current);
+                }
+                else
+                {
+                    response = await IHelper.UpdateEntity(data);
+
+                    if (response == null ||
+                        response.ContainsKey("Error") ||
+                        !response.ContainsKey("Response") ||
+                        Convert.ToInt32(response["Response"]) != (int)Action.UPDATED)
+                        return response;
+                    currentCopy = null;
+                }
+                Action = Action.NONE;
+                //await IUserControl.ActiveButtons(Action);
+
+                await Cancel();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(ex);
+
+            }
+            finally
+            {
+                await IUserControl.Loading(Loading.REMOVE);
+            }
+
+            return response;
+        }
+
         public void LoginCommandExecute(object parameter) { Login(null); }
 
     }

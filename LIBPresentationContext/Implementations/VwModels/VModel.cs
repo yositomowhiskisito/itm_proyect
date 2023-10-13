@@ -203,13 +203,12 @@ namespace LIBPresentationContext.Implementations.VwModels
                 if (Action == Action.NEW)
                 {
                     var response = await IHelper.SaveEntity(data);
-                    await MessagesHelper.AsyncShow("Info Saved");
 
                     if (response == null ||
                         response.ContainsKey("Error") ||
-                        !response.ContainsKey("Response") ||
-                        Convert.ToInt32(response["Response"]) != (int)Action.SAVED)
+                        !response.ContainsKey("Response"))
                         return;
+
                     Current = (T)response["Current"];
                     List.Add(Current);
                 }

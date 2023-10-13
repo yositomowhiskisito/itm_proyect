@@ -89,6 +89,8 @@ namespace LIBDataContext.Implementations
                     return response;
                 }
 
+                current.Id = responseValue;
+
                 response["Current"] = current;
                 response["Response"] = "OK";
                 return response;

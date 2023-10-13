@@ -140,14 +140,6 @@
                                     Keyboard="Default"
                                     TextColor="Black"
                                     BackgroundColor="LightGray"/>
-                                <Image Grid.Column="4" 
-                                    Grid.Row="2" 
-                                    Source="types.png" 
-                                    HorizontalOptions="FillAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
 
                                 <Label x:Name="lbPassword"
                                     Grid.Row="3" 

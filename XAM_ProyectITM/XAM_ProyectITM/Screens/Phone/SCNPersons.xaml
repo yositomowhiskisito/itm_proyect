@@ -113,15 +113,18 @@
                                     FontSize="15" 
                                     Text="{x:Static rs:RsPersons.lbSSN}"
                                     TextColor="Black"/>
-                                <Entry Margin="2"
+                                <c:CustomEntry Margin="2"
                                     Grid.Row="1" 
                                     Grid.Column="1"  
                                     x:Name="txSSN" 
                                     Keyboard="Numeric"
                                     TextColor="Black"
                                     Grid.ColumnSpan="3"
+                                    CornerRadius="15"
+                                    BorderColor="DimGray"
+                                    Placeholder="SNN"
                                     TextChanged="TextChanged"
-                                    BackgroundColor="LightGray"
+                                    IsCurvedCornersEnabled="True"
                                     Text="{Binding Current.SSN, Mode=TwoWay}"/>
 
                                 <Label Grid.Row="2" 
@@ -152,14 +155,15 @@
                                     TextColor="Black"
                                     HorizontalOptions="End"
                                     VerticalOptions="Center"/>
-                                <DatePicker Grid.Row="3" 
+                                <c:DatetimeEntry Grid.Row="3" 
                                     Grid.Column="1" 
                                     Margin="2"
                                     x:Name="txBorn"  
-                                    TextColor="Black"
                                     Grid.ColumnSpan="3" 
+                                    CornerRadius="15"
+                                    BorderColor="DimGray"
                                     DateSelected="txBorn_DateSelected"
-                                    BackgroundColor="LightGray"
+                                    IsCurvedCornersEnabled="True"
                                     Date="{Binding Current.Born, Mode=TwoWay}"/>
 
                                 <Label Grid.Row="4" 
@@ -176,6 +180,17 @@
                                     Color="DeepSkyBlue"
                                     CheckedChanged="cbState_CheckedChanged"
                                     IsChecked="{Binding Current.State, Mode=TwoWay}"/>
+
+                                <Image x:Name="imgUser"
+                                    Grid.Row="5"  
+                                    Grid.Column="0" 
+                                    Source="Users.png"
+                                    IsVisible="False"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </Grid>
                         </Frame>
 

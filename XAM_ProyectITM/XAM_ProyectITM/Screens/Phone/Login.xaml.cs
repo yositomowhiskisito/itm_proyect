@@ -12,6 +12,7 @@ using Xamarin.Forms.Xaml;
 using System.Net.Mail;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Runtime.CompilerServices;
 
 namespace XAM_ProyectITM.Screens.Phone
 {

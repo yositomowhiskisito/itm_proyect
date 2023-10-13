@@ -115,7 +115,7 @@ namespace LIBPresentationContext.Implementations.Helpers
                     return response;
                 }
                 if (IParser != null && response.ContainsKey("Current"))
-                    response["Current"] = IParser.ToEntity((Dictionary<string, object>)response["Entity"]);
+                    response["Current"] = IParser.ToEntity((Dictionary<string, object>)response["Current"]);
 
                 await MessagesHelper.AsyncShow("Info Saved");
 

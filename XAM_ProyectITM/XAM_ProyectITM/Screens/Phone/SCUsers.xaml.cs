@@ -21,7 +21,8 @@ namespace XAM_ProyectITM.Screens.Phone
 
         public SCUsers ()
 		{
-			InitializeComponent (); var data = new Dictionary<string, object>();
+			InitializeComponent (); 
+            var data = new Dictionary<string, object>();
             data.Add("View", this);
             IVmMaintenance = new VmUsers(data);
             this.BindingContext = IVmMaintenance;

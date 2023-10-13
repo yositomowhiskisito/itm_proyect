@@ -244,14 +244,16 @@
                                     TextColor="Black"
                                     HorizontalOptions="End"
                                     VerticalOptions="Center"/>
-                                <DatePicker Grid.Row="3" 
+                                <c:DatetimeEntry Grid.Row="3" 
                                     Grid.Column="1" 
                                     Margin="2"
                                     x:Name="txBorn"  
                                     TextColor="Black"
                                     Grid.ColumnSpan="3" 
+                                    CornerRadius="15"
+                                    BorderColor="DimGray"
                                     DateSelected="txBorn_DateSelected"
-                                    BackgroundColor="LightGray"
+                                    IsCurvedCornersEnabled="True"
                                     Date="{Binding Current.Born, Mode=TwoWay}"/>
 
                                 <Label Grid.Row="4" 
