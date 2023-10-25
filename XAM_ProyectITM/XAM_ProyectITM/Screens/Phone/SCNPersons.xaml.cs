@@ -3,10 +3,14 @@ using LIBDomainEntities.Entities;
 using LIBPresentationContext.Implementations.VwModels;
 using LIBPresentationCore.Core;
 using LIBUtilities.Core;
+using Plugin.Media.Abstractions;
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using XAM_ProyectITM.Screens.Phone.Popups;
 using XAM_ProyectITM.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,6 +23,7 @@ namespace XAM_ProyectITM.Screens.Phone
     {
         protected Action action;
         public IVmMaintenance<Persons> IVmMaintenance;
+        private IUCPopup IUCPopup;
 
         public SCNPersons ()
 		{
@@ -114,7 +119,7 @@ namespace XAM_ProyectITM.Screens.Phone
             {
                 ((VmPersons)this.BindingContext).Action = Action.NEW;
                 await ((VmPersons)this.BindingContext).Save();
-                this.imgUser.IsVisible = true;
+                this.fUsNCam.IsVisible = true;
             }
             catch (Exception ex)
             {
@@ -128,10 +133,30 @@ namespace XAM_ProyectITM.Screens.Phone
             {
                 await Navigation.PushAsync(new SCNUsers(((VmPersons)this.BindingContext).Current));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogsHelper.Logs(ex);
+            }
+        }
 
-                throw;
+        private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
+        {
+            try
+            {
+                var photo =
+                    await Plugin.Media.CrossMedia.Current
+                        .TakePhotoAsync(new StoreCameraMediaOptions());
+                if (photo != null)
+                {
+                    Photo.Source = ImageSource.FromStream(() =>
+                    {
+                        return photo.GetStream();
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                LogsHelper.Logs(ex);
             }
         }
     }

@@ -13,6 +13,7 @@ using XAM_ProyectITM.Services;
 using XAM_ProyectITM.Droid.Services;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
+using Plugin.CurrentActivity;
 
 namespace XAM_ProyectITM.Droid
 {
@@ -24,7 +25,7 @@ namespace XAM_ProyectITM.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Instance = this;
             Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
             Window.SetNavigationBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));

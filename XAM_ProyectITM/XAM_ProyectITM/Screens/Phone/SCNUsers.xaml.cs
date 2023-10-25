@@ -50,7 +50,7 @@ namespace XAM_ProyectITM.Screens.Phone
                 ((VmUsers)this.BindingContext).Action = Action.NEW;
                 response = await ((VmUsers)this.BindingContext).Save();
 
-                //await Navigation.PopToRootAsync();
+                await Navigation.PopToRootAsync();
             }
             catch (Exception ex)
             {

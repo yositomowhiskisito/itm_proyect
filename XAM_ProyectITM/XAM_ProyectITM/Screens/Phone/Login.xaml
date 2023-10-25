@@ -129,10 +129,10 @@
                         HasShadow="True">
 
                         <Button 
-                        Text="Don't have a user? Create your user"
-                        Clicked="Button_Clicked"
-                        TextColor="DeepSkyBlue"
-                        BackgroundColor="Transparent">
+                            Text="Don't have a user? Create your user"
+                            Clicked="Button_Clicked"
+                            TextColor="DeepSkyBlue"
+                            BackgroundColor="Transparent">
                         </Button>
                     </Frame>
 

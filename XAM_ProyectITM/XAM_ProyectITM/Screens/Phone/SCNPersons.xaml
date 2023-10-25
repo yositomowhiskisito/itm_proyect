@@ -32,7 +32,7 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="200"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -92,7 +92,7 @@
                                     <RowDefinition Height="45"/>
                                     <RowDefinition Height="45"/>
                                     <RowDefinition Height="45"/>
-                                    <RowDefinition Height="45"/>
+                                    <RowDefinition Height="80"/>
                                     <RowDefinition Height="45"/>
                                     <RowDefinition Height="45"/>
                                     <RowDefinition Height="4"/>
@@ -181,16 +181,32 @@
                                     CheckedChanged="cbState_CheckedChanged"
                                     IsChecked="{Binding Current.State, Mode=TwoWay}"/>
 
-                                <Image x:Name="imgUser"
+                                <Frame x:Name="fUsNCam"
                                     Grid.Row="5"  
-                                    Grid.Column="0" 
-                                    Source="Users.png"
+                                    Grid.Column="0"
                                     IsVisible="False"
-                                    HorizontalOptions="FillAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
+                                    CornerRadius="15"
+                                    HasShadow="True"
+                                    Grid.ColumnSpan="5">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image x:Name="imgUser"
+                                            Source="MUser.png"
+                                            WidthRequest="40"
+                                            HorizontalOptions="CenterAndExpand">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+                                        <Image x:Name="imgCamera"
+                                            Source="camera.png"
+                                            HorizontalOptions="CenterAndExpand">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </Frame>
                             </Grid>
                         </Frame>
 
@@ -239,6 +255,14 @@
                     Grid.ColumnSpan="2"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"/>
+
+                <Image x:Name="Photo"
+                    Grid.Row="6" 
+                    WidthRequest="200"
+                    HeightRequest="200"
+                    Grid.Column="0"
+                    IsOpaque="True"
+                    Grid.ColumnSpan="2"/>
             </Grid>
 
         </ScrollView>

@@ -232,14 +232,6 @@ namespace XAM_ProyectITM.Screens.Phone
 
                 await CrossXamarinFormsSaveOpenPDFPackage.Current.SaveAndView("Persons.pdf", "application/pdf", docpdf, PDFOpenContext.InApp);
                 
-                //var httpClient = new HttpClient();
-                //var stream = await httpClient.GetStreamAsync("https://riptutorial.com/Download/xamarin-android.pdf");
-
-                /*using (var memoryStream = new MemoryStream())
-                {
-                    await stream.CopyToAsync(memoryStream);
-                    await CrossXamarinFormsSaveOpenPDFPackage.Current.SaveAndView("myFile.pdf", "application/pdf", memoryStream, PDFOpenContext.InApp);
-                }*/
             }
             catch (Exception ex)
             {
